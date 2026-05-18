@@ -13,6 +13,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 const ALLOWED_SORT_FIELDS = new Set([
   "id",
   "appointment_date",
+  "start_time_raw",
+  "end_time_raw",
   "date_updated",
   "date_added",
   "date_completed",
@@ -60,7 +62,7 @@ Deno.serve(async (req) => {
     const pageSize = Math.min(200, Math.max(1, asNumber(body.page_size) ?? 25));
     const offset = (page - 1) * pageSize;
 
-    const sortByRaw = asString(body.sort_by) ?? "date_updated";
+    const sortByRaw = asString(body.sort_by) ?? "appointment_date";
     const sortBy = ALLOWED_SORT_FIELDS.has(sortByRaw) ? sortByRaw : "date_updated";
     const sortDir = (asString(body.sort_dir) ?? "desc").toLowerCase() === "asc";
 
@@ -107,7 +109,10 @@ Deno.serve(async (req) => {
       );
     }
 
-    query = query.order(sortBy, { ascending: sortDir }).order("id", { ascending: sortDir });
+    query = query
+      .order(sortBy, { ascending: sortDir })
+      .order("start_time_raw", { ascending: sortDir })
+      .order("id", { ascending: sortDir });
     query = query.range(offset, offset + pageSize - 1);
 
     const { data, count, error } = await query;

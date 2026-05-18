@@ -67,6 +67,7 @@ This document defines how FieldRoutes payloads map into Supabase workflow cache 
 - `fname` <- `employee.fname` (text)
 - `lname` <- `employee.lname` (text)
 - `initials` <- `employee.initials` (text)
+- `pic` <- `employee.pic` (text filename token)
 - `employee_type` <- `employee.type` (text)
 - `linked_employee_ids` <- `employee.linkedEmployeeIDs` (text)
 - `access_control_profile_id` <- `employee.accessControlProfileID` (bigint nullable)

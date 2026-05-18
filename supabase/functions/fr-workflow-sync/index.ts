@@ -169,6 +169,7 @@ function mapEmployeeRow(e: JsonObject) {
     fname: e.fname == null ? null : String(e.fname),
     lname: e.lname == null ? null : String(e.lname),
     initials: e.initials == null ? null : String(e.initials),
+    pic: e.pic == null ? null : String(e.pic),
     employee_type: e.type == null ? null : String(e.type),
     linked_employee_ids: e.linkedEmployeeIDs == null ? null : String(e.linkedEmployeeIDs),
     access_control_profile_id: toNullableId(e.accessControlProfileID),

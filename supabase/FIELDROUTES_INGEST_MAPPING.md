@@ -13,10 +13,10 @@ This document defines how FieldRoutes payloads map into Supabase workflow cache 
 ## Source APIs and ingestion flow
 
 1. `POST /api/appointment/search` -> collect `appointmentIDs`.
-2. `POST /api/appointment/get` -> upsert `app_public.fr_appointments`.
+2. `POST /api/appointment/get` -> upsert `public.fr_appointments`.
 3. extract employee IDs from appointment role columns.
-4. `POST /api/employee/get` -> upsert `app_public.fr_employees`.
-5. update `app_public.fr_sync_meta` watermark values.
+4. `POST /api/employee/get` -> upsert `public.fr_employees`.
+5. update `public.fr_sync_meta` watermark values.
 
 ## Sentinel normalization rules
 
@@ -59,7 +59,7 @@ This document defines how FieldRoutes payloads map into Supabase workflow cache 
 
 ## Field mappings
 
-### `app_public.fr_employees`
+### `public.fr_employees`
 
 - `id` <- `employee.employeeID` (bigint)
 - `office_id` <- `employee.officeID` (bigint nullable)
@@ -69,7 +69,7 @@ This document defines how FieldRoutes payloads map into Supabase workflow cache 
 - `date_updated` <- normalized `employee.dateUpdated` (timestamptz nullable)
 - `synced_at` <- sync timestamp (`now()`)
 
-### `app_public.fr_appointments`
+### `public.fr_appointments`
 
 - `id` <- `appointment.appointmentID`
 - `office_id` <- `appointment.officeID`
@@ -111,12 +111,22 @@ Execution timestamps:
 - `check_in` <- normalized `appointment.checkIn`
 - `check_out` <- normalized `appointment.checkOut`
 
+Tracking coordinates:
+- `lat_in` <- normalized numeric `appointment.latIn`
+- `lat_out` <- normalized numeric `appointment.latOut`
+- `long_in` <- normalized numeric `appointment.longIn`
+- `long_out` <- normalized numeric `appointment.longOut`
+
+Notes payload:
+- `notes` <- `appointment.notes`
+- `office_notes` <- `appointment.officeNotes`
+- `appointment_notes` <- `appointment.appointmentNotes`
+
 - `synced_at` <- sync timestamp (`now()`)
 
 ## Excluded from workflow cache v1
 
-- notes fields (`notes`, `officeNotes`, `appointmentNotes`)
-- payment/weather/location detail fields (`amountCollected`, `wind*`, `lat*`, `long*`)
+- payment/weather detail fields (`amountCollected`, `wind*`, `temperature`, `paymentMethod`, `servicedInterior`)
 - full nested arrays/objects (`unitIDs`, full employee profile extras)
 
 These remain available from direct FieldRoutes API reads when needed.

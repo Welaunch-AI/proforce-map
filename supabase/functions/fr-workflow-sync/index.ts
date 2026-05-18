@@ -18,9 +18,7 @@ if (!FR_BASE_URL || !FR_KEY || !FR_TOKEN || !SUPABASE_URL || !SUPABASE_SERVICE_R
   console.error("Missing required env vars for fr-workflow-sync");
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-  db: { schema: "app_public" },
-});
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 function chunk<T>(arr: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -42,6 +40,14 @@ function toNullableInt(v: unknown): number | null {
   if (!s) return null;
   const n = Number(s);
   return Number.isFinite(n) ? Math.trunc(n) : null;
+}
+
+function toNullableNumber(v: unknown): number | null {
+  if (v == null) return null;
+  const s = String(v).trim();
+  if (!s) return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
 }
 
 function toNullableDate(v: unknown): string | null {
@@ -140,6 +146,13 @@ function mapAppointmentRow(a: JsonObject) {
     time_out: toNullableTimestamp(a.timeOut),
     check_in: toNullableTimestamp(a.checkIn),
     check_out: toNullableTimestamp(a.checkOut),
+    lat_in: toNullableNumber(a.latIn),
+    lat_out: toNullableNumber(a.latOut),
+    long_in: toNullableNumber(a.longIn),
+    long_out: toNullableNumber(a.longOut),
+    notes: a.notes == null ? null : String(a.notes),
+    office_notes: a.officeNotes == null ? null : String(a.officeNotes),
+    appointment_notes: a.appointmentNotes == null ? null : String(a.appointmentNotes),
     synced_at: new Date().toISOString(),
   };
 }
@@ -253,8 +266,12 @@ Deno.serve(async () => {
       { headers: { "content-type": "application/json" }, status: 200 },
     );
   } catch (err) {
+    const errorMessage =
+      err instanceof Error
+        ? err.message
+        : (typeof err === "object" && err !== null ? JSON.stringify(err) : String(err));
     return new Response(
-      JSON.stringify({ ok: false, error: err instanceof Error ? err.message : String(err) }, null, 2),
+      JSON.stringify({ ok: false, error: errorMessage }, null, 2),
       { headers: { "content-type": "application/json" }, status: 500 },
     );
   }

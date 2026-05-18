@@ -22,6 +22,10 @@ It is intentionally **not** a full FieldRoutes mirror.
    - `app_public.fr_employees`
 7. Updates `app_public.fr_sync_meta` for watermark tracking.
 
+Additional fields now ingested on appointments:
+- coordinates: `lat_in`, `lat_out`, `long_in`, `long_out`
+- notes payload: `notes`, `office_notes`, `appointment_notes`
+
 ## Important behavior
 
 - No appointment fetch filter by office ID is applied.
@@ -65,6 +69,7 @@ Migration reference:
 - ID sentinels treated as null:
   - `0`
   - `-1`
+- Coordinates are stored as numeric (`lat_*`, `long_*`) when parseable; otherwise null.
 
 ## Write/update rules
 

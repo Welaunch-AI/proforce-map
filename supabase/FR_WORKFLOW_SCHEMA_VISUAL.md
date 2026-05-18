@@ -3,6 +3,9 @@
 This visual describes the schema introduced by:
 
 - `supabase/migrations/20260518191500_fr_workflow_cache.sql`
+- `supabase/migrations/20260518203400_move_fr_cache_tables_to_public.sql`
+- `supabase/migrations/20260518203900_grant_service_role_fr_cache.sql`
+- `supabase/migrations/20260518205500_add_tracking_and_notes_fields.sql`
 
 ## ER Diagram
 
@@ -51,6 +54,13 @@ erDiagram
     timestamptz time_out
     timestamptz check_in
     timestamptz check_out
+    numeric lat_in
+    numeric lat_out
+    numeric long_in
+    numeric long_out
+    text notes
+    text office_notes
+    text appointment_notes
     timestamptz synced_at
   }
 

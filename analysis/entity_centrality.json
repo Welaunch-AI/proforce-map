@@ -1,0 +1,30 @@
+[
+  {
+    "id": "/api/employee/get",
+    "system": "fieldroutes",
+    "inbound": 8,
+    "outbound": 7,
+    "degree": 15
+  },
+  {
+    "id": "/v2/vehicle_locations",
+    "system": "motive",
+    "inbound": 0,
+    "outbound": 1,
+    "degree": 1
+  },
+  {
+    "id": "/v1/users",
+    "system": "motive",
+    "inbound": 1,
+    "outbound": 0,
+    "degree": 1
+  },
+  {
+    "id": "/api/employee/search",
+    "system": "fieldroutes",
+    "inbound": 0,
+    "outbound": 1,
+    "degree": 1
+  }
+]

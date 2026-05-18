@@ -1,0 +1,34 @@
+{
+  "relationships": {
+    "vehicle_current_driver_to_user": {
+      "sourceField": "vehicle.current_driver.id",
+      "targetField": "user.id",
+      "observedReferences": 5,
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "duplicateDriverAssignments": 0,
+      "topology": "mostly_one_to_one_in_snapshot",
+      "confidence": "high"
+    },
+    "driver_current_vehicle_to_vehicle": {
+      "sourceField": "driver.current_vehicle.id",
+      "targetField": "vehicle.id",
+      "observedReferences": 0,
+      "validJoinRate": 0,
+      "orphanRate": 0,
+      "confidence": "unavailable_in_current_dataset",
+      "note": "No current_vehicle.id present in collected /v1/users payload"
+    }
+  },
+  "counts": {
+    "totalUsers": 466,
+    "totalVehicles": 374,
+    "vehiclesWithCurrentDriver": 5,
+    "vehiclesWithoutCurrentDriver": 369,
+    "usersWithCurrentVehicleSignal": 0,
+    "usersWithoutCurrentVehicleSignal": 466
+  },
+  "mismatchFlags": {
+    "massiveVehicleDriverOrphans": false
+  }
+}

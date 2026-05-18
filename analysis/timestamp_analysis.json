@@ -1,0 +1,202 @@
+[
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.web_last_active_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.created_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.updated_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "milliseconds_present"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.web_current_sign_in_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.web_last_sign_in_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.mobile_last_active_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.mobile_last_sign_in_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.mobile_current_sign_in_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.joined_at",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "date_only"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.expires_at",
+    "sampleCount": 3,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v2/vehicle_locations",
+    "field": "vehicle.current_location.located_at",
+    "sampleCount": 50,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "lastLogin",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "dateUpdated",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "accessControl[].dateUpdated",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "date",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "date_only"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "dateAdded",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "dateCompleted",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "timeIn",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "timeOut",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "checkIn",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "checkOut",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "dateUpdated",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "dueDate",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "date_only"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/driver_locations",
+    "field": "current_location.lat",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/driver_locations",
+    "field": "current_location.located_at",
+    "sampleCount": 50,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed"
+  }
+]

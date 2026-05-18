@@ -1,0 +1,13 @@
+{
+  "driver_vs_vehicle_gps_equivalence": "unverifiable_with_current_dataset",
+  "observedVehicleDriverLinkedRecords": 5,
+  "coordinateDriftAnalysis": {
+    "available": false,
+    "reason": "No driver GPS coordinates collected"
+  },
+  "timestampDivergenceAnalysis": {
+    "available": false,
+    "reason": "No driver location timestamps collected"
+  },
+  "semanticInterpretation": "Vehicle location stream appears canonical for asset position; driver-vs-vehicle divergence requires driver location stream acquisition."
+}

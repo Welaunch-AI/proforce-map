@@ -1,0 +1,21 @@
+{
+  "fields": [
+    {
+      "field": "driver.current_location.located_at",
+      "sampleCount": 383,
+      "parseSuccessPct": 100,
+      "latestObserved": "2026-05-17T16:46:18.000Z",
+      "freshnessHours": 2.22,
+      "realtimeUsefulness": "high"
+    },
+    {
+      "field": "vehicle.current_location.located_at",
+      "sampleCount": 201,
+      "parseSuccessPct": 100,
+      "latestObserved": "2026-05-17T17:08:25.000Z",
+      "freshnessHours": 1.85,
+      "realtimeUsefulness": "high"
+    }
+  ],
+  "severeCorruption": false
+}

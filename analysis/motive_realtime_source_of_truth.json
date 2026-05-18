@@ -1,0 +1,9 @@
+{
+  "scores": {
+    "vehicle": 90,
+    "driver": 20,
+    "combined_hybrid": 55
+  },
+  "recommendedCanonicalSource": "vehicle",
+  "rationale": "Vehicle stream has broad coverage and fresh located_at values, while driver location stream is absent in current corpus."
+}

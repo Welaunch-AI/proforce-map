@@ -1,0 +1,9 @@
+{
+  "driverToVehicleObservedCount": 51,
+  "uniqueDriversWithVehicle": 51,
+  "uniqueVehiclesWithDriver": 51,
+  "oneDriverMultipleVehicles": 0,
+  "unassignedDrivers": 356,
+  "unassignedVehiclesFromDriverPerspective": 323,
+  "note": "Stability is snapshot-based; reassignment frequency requires longitudinal snapshots."
+}

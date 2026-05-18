@@ -1,0 +1,91 @@
+[
+  {
+    "strategy": "exact_email",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 206,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low"
+  },
+  {
+    "strategy": "normalized_email",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 206,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low"
+  },
+  {
+    "strategy": "username_similarity",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 258,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low"
+  },
+  {
+    "strategy": "exact_full_name",
+    "candidateMatches": 75,
+    "ambiguousMatches": 5,
+    "duplicateConflicts": 12,
+    "nullBlockers": 0,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 16.09,
+    "confidence": "low"
+  },
+  {
+    "strategy": "normalized_full_name",
+    "candidateMatches": 75,
+    "ambiguousMatches": 5,
+    "duplicateConflicts": 12,
+    "nullBlockers": 0,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 16.09,
+    "confidence": "low"
+  },
+  {
+    "strategy": "external_ids",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 413,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low"
+  },
+  {
+    "strategy": "phone_numbers",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 301,
+    "leftPopulation": 466,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low"
+  },
+  {
+    "strategy": "vehicle_overlap",
+    "candidateMatches": 0,
+    "ambiguousMatches": 0,
+    "duplicateConflicts": 0,
+    "nullBlockers": 430,
+    "leftPopulation": 374,
+    "rightPopulation": 430,
+    "hitRatePct": 0,
+    "confidence": "low",
+    "note": "No direct vehicle identifier field found in FieldRoutes employee dataset"
+  }
+]

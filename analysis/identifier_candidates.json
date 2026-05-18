@@ -1,0 +1,135 @@
+[
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "employeeID",
+    "uniqueValues": 430,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "officeID",
+    "uniqueValues": 1,
+    "overlapsDetected": 1
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "supervisorID",
+    "uniqueValues": 11,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "accessControlProfileID",
+    "uniqueValues": 39,
+    "overlapsDetected": 430
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "appointmentID",
+    "uniqueValues": 221,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "officeID",
+    "uniqueValues": 1,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "customerID",
+    "uniqueValues": 160,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "subscriptionID",
+    "uniqueValues": 186,
+    "overlapsDetected": 10
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "subscriptionRegionID",
+    "uniqueValues": 2,
+    "overlapsDetected": 249
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "routeID",
+    "uniqueValues": 91,
+    "overlapsDetected": 447
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "spotID",
+    "uniqueValues": 202,
+    "overlapsDetected": 637
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "tempSpotID",
+    "uniqueValues": 214,
+    "overlapsDetected": 204
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "employeeID",
+    "uniqueValues": 38,
+    "overlapsDetected": 0
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "ticketID",
+    "uniqueValues": 133,
+    "overlapsDetected": 663
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "cancellationReasonID",
+    "uniqueValues": 1,
+    "overlapsDetected": 531
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "rescheduleReasonID",
+    "uniqueValues": 1,
+    "overlapsDetected": 531
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "reserviceReasonID",
+    "uniqueValues": 1,
+    "overlapsDetected": 531
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "originalAppointmentID",
+    "uniqueValues": 3,
+    "overlapsDetected": 231
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "field": "groupID",
+    "uniqueValues": 66,
+    "overlapsDetected": 0
+  }
+]

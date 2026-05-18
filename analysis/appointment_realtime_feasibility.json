@@ -1,0 +1,15 @@
+{
+  "entity": "appointment",
+  "recordsAnalyzed": 221,
+  "freshnessHours": 583.53,
+  "lifecycleStateVariety": 2,
+  "trackingSignalRate": 19.91,
+  "realtimeFeasibilityScore": 50,
+  "realtimeFeasibility": "medium",
+  "useCases": {
+    "liveDispatchState": "limited",
+    "technicianTrackingLinkage": "weak",
+    "idleEscalation": "limited",
+    "operationalMonitoring": "limited"
+  }
+}

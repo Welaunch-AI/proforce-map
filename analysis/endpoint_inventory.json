@@ -1,0 +1,78 @@
+[
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "pagesCollected": 19,
+    "recordsCollected": 466,
+    "responseShape": "users[]",
+    "paginationDetected": true,
+    "nestedObjects": [
+      "user",
+      "user.external_ids[]"
+    ]
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v2/vehicle_locations",
+    "pagesCollected": 15,
+    "recordsCollected": 374,
+    "responseShape": "vehicles[]",
+    "paginationDetected": true,
+    "nestedObjects": [
+      "vehicle",
+      "vehicle.current_driver",
+      "vehicle.current_location"
+    ]
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/search",
+    "pagesCollected": 1,
+    "recordsCollected": 430,
+    "responseShape": "employeeIDs[]",
+    "paginationDetected": false,
+    "nestedObjects": []
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "pagesCollected": 6,
+    "recordsCollected": 430,
+    "responseShape": "employees[]",
+    "paginationDetected": false,
+    "nestedObjects": [
+      "accessControl[]",
+      "skills"
+    ]
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/search",
+    "pagesCollected": 1,
+    "recordsCollected": 221,
+    "responseShape": "appointmentIDs[]",
+    "paginationDetected": false,
+    "nestedObjects": []
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/appointment/get",
+    "pagesCollected": 3,
+    "recordsCollected": 221,
+    "responseShape": "appointments[]",
+    "paginationDetected": false,
+    "nestedObjects": []
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/driver_locations",
+    "pagesCollected": null,
+    "recordsCollected": 407,
+    "responseShape": "users[]",
+    "paginationDetected": true,
+    "nestedObjects": [
+      "current_location",
+      "current_vehicle"
+    ]
+  }
+]

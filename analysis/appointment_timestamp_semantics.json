@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-05-17T17:53:57.884Z",
+  "totalAppointments": 221,
+  "fields": [
+    {
+      "field": "date",
+      "nonNullCount": 221,
+      "parseSuccessPct": 100,
+      "zeroSentinelPct": 0,
+      "earliestObserved": "2024-12-19T00:00:00.000Z",
+      "latestObserved": "2026-04-24T00:00:00.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "date_only",
+      "operationalReliability": "high"
+    },
+    {
+      "field": "dateAdded",
+      "nonNullCount": 221,
+      "parseSuccessPct": 100,
+      "zeroSentinelPct": 0,
+      "earliestObserved": "2024-12-19T10:48:48.000Z",
+      "latestObserved": "2026-04-23T10:22:16.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "high"
+    },
+    {
+      "field": "dateUpdated",
+      "nonNullCount": 221,
+      "parseSuccessPct": 100,
+      "zeroSentinelPct": 0,
+      "earliestObserved": "2025-02-10T14:15:43.000Z",
+      "latestObserved": "2026-04-23T10:22:16.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "high"
+    },
+    {
+      "field": "dateCompleted",
+      "nonNullCount": 147,
+      "parseSuccessPct": 89.8,
+      "zeroSentinelPct": 6.79,
+      "earliestObserved": "2024-12-24T06:24:33.000Z",
+      "latestObserved": "2026-04-22T22:48:00.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "medium"
+    },
+    {
+      "field": "dateCancelled",
+      "nonNullCount": 0,
+      "parseSuccessPct": 0,
+      "zeroSentinelPct": 0,
+      "earliestObserved": null,
+      "latestObserved": null,
+      "timezonePattern": "unknown_or_local",
+      "precision": "date_only",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "start",
+      "nonNullCount": 221,
+      "parseSuccessPct": 0,
+      "zeroSentinelPct": 0,
+      "earliestObserved": null,
+      "latestObserved": null,
+      "timezonePattern": "unknown_or_local",
+      "precision": "mixed",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "end",
+      "nonNullCount": 221,
+      "parseSuccessPct": 0,
+      "zeroSentinelPct": 0,
+      "earliestObserved": null,
+      "latestObserved": null,
+      "timezonePattern": "unknown_or_local",
+      "precision": "mixed",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "timeIn",
+      "nonNullCount": 147,
+      "parseSuccessPct": 29.93,
+      "zeroSentinelPct": 46.61,
+      "earliestObserved": "2024-12-24T08:14:36.000Z",
+      "latestObserved": "2026-04-22T15:59:37.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "timeOut",
+      "nonNullCount": 147,
+      "parseSuccessPct": 21.77,
+      "zeroSentinelPct": 52.04,
+      "earliestObserved": "2024-12-24T09:24:27.000Z",
+      "latestObserved": "2026-04-22T16:08:24.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "checkIn",
+      "nonNullCount": 147,
+      "parseSuccessPct": 29.93,
+      "zeroSentinelPct": 46.61,
+      "earliestObserved": "2024-12-24T05:14:37.000Z",
+      "latestObserved": "2026-04-22T12:59:39.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "checkOut",
+      "nonNullCount": 147,
+      "parseSuccessPct": 21.77,
+      "zeroSentinelPct": 52.04,
+      "earliestObserved": "2024-12-24T06:24:28.000Z",
+      "latestObserved": "2026-04-22T13:08:29.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "seconds",
+      "operationalReliability": "low"
+    },
+    {
+      "field": "dueDate",
+      "nonNullCount": 221,
+      "parseSuccessPct": 95.48,
+      "zeroSentinelPct": 4.52,
+      "earliestObserved": "2024-12-19T00:00:00.000Z",
+      "latestObserved": "2026-06-25T00:00:00.000Z",
+      "timezonePattern": "unknown_or_local",
+      "precision": "date_only",
+      "operationalReliability": "high"
+    }
+  ]
+}

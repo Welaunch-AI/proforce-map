@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-05-17T17:53:57.883Z",
+  "totalAppointments": 221,
+  "states": [
+    {
+      "status": "1",
+      "statusText": "Completed",
+      "count": 132,
+      "hasDateCompleted": 132,
+      "hasDateCancelled": 0,
+      "hasAssignedTech": 112,
+      "hasServicedBy": 112,
+      "hasCompletedBy": 132,
+      "completionSignalRate": 100,
+      "cancellationSignalRate": 0,
+      "assignedTechRate": 84.85,
+      "servicedByRate": 84.85,
+      "completedByRate": 100
+    },
+    {
+      "status": "0",
+      "statusText": "Pending",
+      "count": 89,
+      "hasDateCompleted": 0,
+      "hasDateCancelled": 0,
+      "hasAssignedTech": 58,
+      "hasServicedBy": 0,
+      "hasCompletedBy": 0,
+      "completionSignalRate": 0,
+      "cancellationSignalRate": 0,
+      "assignedTechRate": 65.17,
+      "servicedByRate": 0,
+      "completedByRate": 0
+    }
+  ],
+  "inferredTransitions": [
+    {
+      "from": "scheduled",
+      "to": "assigned",
+      "evidence": "assignedTech populated while completion signals absent"
+    },
+    {
+      "from": "assigned",
+      "to": "serviced",
+      "evidence": "servicedBy/timeIn/checkIn present"
+    },
+    {
+      "from": "serviced",
+      "to": "completed",
+      "evidence": "completedBy/dateCompleted present"
+    },
+    {
+      "from": "scheduled|assigned",
+      "to": "cancelled",
+      "evidence": "dateCancelled populated"
+    }
+  ]
+}

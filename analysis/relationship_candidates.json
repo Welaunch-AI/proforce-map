@@ -1,0 +1,1028 @@
+[
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/employee/get.officeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/employee/get.supervisorID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/employee/get.accessControlProfileID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.appointmentID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.officeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.employeeID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/employee/get.supervisorID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/employee/get.accessControlProfileID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.appointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.officeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.officeID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/employee/get.accessControlProfileID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.appointmentID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.officeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.supervisorID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.appointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.officeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/employee/get.accessControlProfileID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.officeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.appointmentID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.customerID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.officeID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.subscriptionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.customerID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.subscriptionRegionID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.routeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.subscriptionRegionID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.spotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.routeID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.tempSpotID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.spotID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.employeeID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.tempSpotID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.ticketID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.employeeID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "low",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.ticketID",
+    "targetField": "/api/appointment/get.cancellationReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.ticketID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.ticketID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.ticketID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.ticketID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.cancellationReasonID",
+    "targetField": "/api/appointment/get.rescheduleReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.cancellationReasonID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.cancellationReasonID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.cancellationReasonID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.rescheduleReasonID",
+    "targetField": "/api/appointment/get.reserviceReasonID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.rescheduleReasonID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.rescheduleReasonID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.reserviceReasonID",
+    "targetField": "/api/appointment/get.originalAppointmentID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.reserviceReasonID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  },
+  {
+    "sourceField": "/api/appointment/get.originalAppointmentID",
+    "targetField": "/api/appointment/get.groupID",
+    "confidence": "medium",
+    "evidence": "repeated identifier-like fields across endpoints"
+  }
+]

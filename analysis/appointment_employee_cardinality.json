@@ -1,0 +1,124 @@
+{
+  "totalAppointments": 221,
+  "totalEmployees": 430,
+  "technicianFieldCardinality": [
+    {
+      "sourceField": "appointment.employeeID",
+      "targetField": "employee.employeeID",
+      "totalAppointments": 221,
+      "nonNullAssignments": 221,
+      "nullAssignments": 0,
+      "uniqueAssignedTechs": 38,
+      "validEmployeeRefs": 200,
+      "validJoinRate": 90.5,
+      "orphanRate": 9.5,
+      "inactiveTechnicianAssignmentRate": 0,
+      "confidence": "medium"
+    },
+    {
+      "sourceField": "appointment.assignedTech",
+      "targetField": "employee.employeeID",
+      "totalAppointments": 221,
+      "nonNullAssignments": 170,
+      "nullAssignments": 51,
+      "uniqueAssignedTechs": 38,
+      "validEmployeeRefs": 170,
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "inactiveTechnicianAssignmentRate": 0,
+      "confidence": "high"
+    },
+    {
+      "sourceField": "appointment.servicedBy",
+      "targetField": "employee.employeeID",
+      "totalAppointments": 221,
+      "nonNullAssignments": 112,
+      "nullAssignments": 109,
+      "uniqueAssignedTechs": 38,
+      "validEmployeeRefs": 112,
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "inactiveTechnicianAssignmentRate": 0,
+      "confidence": "high"
+    },
+    {
+      "sourceField": "appointment.completedBy",
+      "targetField": "employee.employeeID",
+      "totalAppointments": 221,
+      "nonNullAssignments": 132,
+      "nullAssignments": 89,
+      "uniqueAssignedTechs": 26,
+      "validEmployeeRefs": 132,
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "inactiveTechnicianAssignmentRate": 0,
+      "confidence": "high"
+    }
+  ],
+  "semanticOverlap": [
+    {
+      "fieldA": "appointment.employeeID",
+      "fieldB": "appointment.assignedTech",
+      "coPopulated": 170,
+      "sameValueCount": 28,
+      "sameValueRate": 16.47
+    },
+    {
+      "fieldA": "appointment.employeeID",
+      "fieldB": "appointment.servicedBy",
+      "coPopulated": 112,
+      "sameValueCount": 19,
+      "sameValueRate": 16.96
+    },
+    {
+      "fieldA": "appointment.employeeID",
+      "fieldB": "appointment.completedBy",
+      "coPopulated": 132,
+      "sameValueCount": 42,
+      "sameValueRate": 31.82
+    },
+    {
+      "fieldA": "appointment.assignedTech",
+      "fieldB": "appointment.servicedBy",
+      "coPopulated": 112,
+      "sameValueCount": 112,
+      "sameValueRate": 100
+    },
+    {
+      "fieldA": "appointment.assignedTech",
+      "fieldB": "appointment.completedBy",
+      "coPopulated": 112,
+      "sameValueCount": 35,
+      "sameValueRate": 31.25
+    },
+    {
+      "fieldA": "appointment.servicedBy",
+      "fieldB": "appointment.completedBy",
+      "coPopulated": 112,
+      "sameValueCount": 35,
+      "sameValueRate": 31.25
+    }
+  ],
+  "multiTechAssignments": {
+    "additionalTechsNonNullRate": 0,
+    "assignedVsServicedDifferentRate": 0
+  },
+  "inactiveTechnicianAssignments": [
+    {
+      "sourceField": "appointment.employeeID",
+      "inactiveTechnicianAssignmentRate": 0
+    },
+    {
+      "sourceField": "appointment.assignedTech",
+      "inactiveTechnicianAssignmentRate": 0
+    },
+    {
+      "sourceField": "appointment.servicedBy",
+      "inactiveTechnicianAssignmentRate": 0
+    },
+    {
+      "sourceField": "appointment.completedBy",
+      "inactiveTechnicianAssignmentRate": 0
+    }
+  ]
+}

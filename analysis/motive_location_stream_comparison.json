@@ -1,0 +1,16 @@
+{
+  "driver_location_stream": {
+    "records": 407,
+    "coordinateCoveragePct": 94.1,
+    "timestampCoveragePct": 94.1,
+    "latestTimestamp": "2026-05-17T16:46:18.000Z",
+    "freshnessHours": 2.22
+  },
+  "vehicle_location_stream": {
+    "records": 374,
+    "coordinateCoveragePct": 53.74,
+    "timestampCoveragePct": 53.74,
+    "latestTimestamp": "2026-05-17T17:08:25.000Z",
+    "freshnessHours": 1.85
+  }
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "endpoint": "/api/employee/get",
+    "field": "employeeID",
+    "uniquenessPct": 100,
+    "nullPercentage": 0,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 94
+  },
+  {
+    "endpoint": "/api/employee/get",
+    "field": "supervisorID",
+    "uniquenessPct": 3.05,
+    "nullPercentage": 23.72,
+    "collisionRiskPct": 96.95,
+    "stabilityScore": 70,
+    "reliabilityScore": 38.41
+  },
+  {
+    "endpoint": "/v1/users",
+    "field": "user.id",
+    "uniquenessPct": 100,
+    "nullPercentage": 0,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 94
+  },
+  {
+    "endpoint": "/v2/vehicle_locations",
+    "field": "vehicle.id",
+    "uniquenessPct": 100,
+    "nullPercentage": 0,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 94
+  },
+  {
+    "endpoint": "/v1/users",
+    "field": "user.email",
+    "uniquenessPct": 100,
+    "nullPercentage": 44.21,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 80.74
+  },
+  {
+    "endpoint": "/v1/users",
+    "field": "user.username",
+    "uniquenessPct": 100,
+    "nullPercentage": 48.89,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 79.33
+  },
+  {
+    "endpoint": "/v1/users",
+    "field": "user.external_ids[].external_id",
+    "uniquenessPct": 0,
+    "nullPercentage": 0,
+    "collisionRiskPct": 100,
+    "stabilityScore": 70,
+    "reliabilityScore": 44
+  },
+  {
+    "endpoint": "/api/employee/get",
+    "field": "email",
+    "uniquenessPct": 100,
+    "nullPercentage": 0,
+    "collisionRiskPct": 0,
+    "stabilityScore": 70,
+    "reliabilityScore": 94
+  },
+  {
+    "endpoint": "/api/employee/get",
+    "field": "phone",
+    "uniquenessPct": 0,
+    "nullPercentage": 0,
+    "collisionRiskPct": 100,
+    "stabilityScore": 70,
+    "reliabilityScore": 44
+  }
+]

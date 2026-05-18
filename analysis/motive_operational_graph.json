@@ -1,0 +1,42 @@
+{
+  "scope": "motive_internal_v2",
+  "nodes": [
+    "driver",
+    "vehicle",
+    "driver_location",
+    "vehicle_location",
+    "assignment_link"
+  ],
+  "edges": [
+    {
+      "from": "driver",
+      "to": "vehicle",
+      "via": "driver.current_vehicle.id -> vehicle.id",
+      "validJoinRate": 100
+    },
+    {
+      "from": "vehicle",
+      "to": "driver",
+      "via": "vehicle.current_driver.id -> driver.id",
+      "validJoinRate": 100
+    },
+    {
+      "from": "driver",
+      "to": "driver_location",
+      "via": "current_location.*",
+      "coveragePct": 94.1
+    },
+    {
+      "from": "vehicle",
+      "to": "vehicle_location",
+      "via": "current_location.*",
+      "coveragePct": 53.74
+    }
+  ],
+  "consistency": {
+    "comparableAssignments": 1,
+    "consistentAssignments": 1,
+    "consistencyRate": 100,
+    "asymmetryCount": 0
+  }
+}

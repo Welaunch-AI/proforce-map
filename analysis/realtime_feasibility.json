@@ -1,0 +1,35 @@
+[
+  {
+    "entity": "motive_users",
+    "endpoint": "/v1/users",
+    "timestampField": "user.updated_at",
+    "freshnessHours": 0.7,
+    "timezonePattern": "UTC_Z",
+    "precision": "milliseconds_present",
+    "stateVolatility": "medium",
+    "realtimeFeasibilityScore": 85,
+    "realtimeFeasibility": "high"
+  },
+  {
+    "entity": "motive_vehicle_locations",
+    "endpoint": "/v2/vehicle_locations",
+    "timestampField": "vehicle.current_location.located_at",
+    "freshnessHours": 0.42,
+    "timezonePattern": "UTC_Z",
+    "precision": "seconds_or_mixed",
+    "stateVolatility": "medium",
+    "realtimeFeasibilityScore": 85,
+    "realtimeFeasibility": "high"
+  },
+  {
+    "entity": "fieldroutes_employee",
+    "endpoint": "/api/employee/get",
+    "timestampField": "dateUpdated",
+    "freshnessHours": 154.62,
+    "timezonePattern": "unknown_or_mixed",
+    "precision": "seconds_or_mixed",
+    "stateVolatility": "medium",
+    "realtimeFeasibilityScore": 60,
+    "realtimeFeasibility": "medium"
+  }
+]

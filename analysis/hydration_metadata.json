@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-05-17T17:46:30.173Z",
+  "runId": "2026_05_17_23_16_08_822",
+  "entities": [
+    {
+      "entity": "employee",
+      "searchEndpoint": "https://proforceofficetwelvesb.fieldroutes.com/api/employee/search",
+      "hydrationEndpoint": "https://proforceofficetwelvesb.fieldroutes.com/api/employee/get",
+      "idName": "employeeIDs",
+      "idArrayProperty": "employeeIDs",
+      "totalIDs": 430,
+      "chunkCount": 6,
+      "hydratedRecords": 430,
+      "completed": true
+    },
+    {
+      "entity": "appointment",
+      "searchEndpoint": "https://proforceofficetwelvesb.fieldroutes.com/api/appointment/search",
+      "hydrationEndpoint": "https://proforceofficetwelvesb.fieldroutes.com/api/appointment/get",
+      "idName": "appointmentIDs",
+      "idArrayProperty": "appointmentIDs",
+      "totalIDs": 221,
+      "chunkCount": 3,
+      "hydratedRecords": 221,
+      "completed": true
+    }
+  ]
+}

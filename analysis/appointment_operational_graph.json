@@ -1,0 +1,90 @@
+{
+  "hubEntity": "appointment",
+  "nodes": [
+    "appointment",
+    "employee",
+    "customer",
+    "route",
+    "status",
+    "timestamps"
+  ],
+  "edges": [
+    {
+      "from": "appointment",
+      "to": "employee",
+      "label": "employeeID",
+      "validJoinRate": 90.5,
+      "orphanRate": 9.5,
+      "confidence": "medium"
+    },
+    {
+      "from": "appointment",
+      "to": "employee",
+      "label": "assignedTech",
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "employee",
+      "label": "servicedBy",
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "employee",
+      "label": "completedBy",
+      "validJoinRate": 100,
+      "orphanRate": 0,
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "customer",
+      "label": "customerID",
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "route",
+      "label": "routeID",
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "status",
+      "label": "status/statusText",
+      "confidence": "high"
+    },
+    {
+      "from": "appointment",
+      "to": "timestamps",
+      "label": "dateAdded/dateUpdated/dateCompleted",
+      "confidence": "high"
+    }
+  ],
+  "stateSummary": {
+    "distinctStates": 2,
+    "topStates": [
+      {
+        "status": "1",
+        "statusText": "Completed",
+        "count": 132
+      },
+      {
+        "status": "0",
+        "statusText": "Pending",
+        "count": 89
+      }
+    ],
+    "reliableTimestampFields": [
+      "date",
+      "dateAdded",
+      "dateUpdated",
+      "dueDate"
+    ]
+  }
+}

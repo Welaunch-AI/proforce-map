@@ -1,0 +1,6 @@
+{
+  "comparablePairs": 5,
+  "averageCoordinateDriftKm": 0.335,
+  "p95DriftKm": 0.546,
+  "semanticConclusion": "Driver and vehicle GPS show divergence; likely distinct operational realities."
+}

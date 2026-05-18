@@ -1,0 +1,102 @@
+[
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.role",
+    "states": [
+      "driver",
+      "fleet_user",
+      "admin"
+    ],
+    "dominantState": "driver",
+    "distribution": [
+      {
+        "value": "driver",
+        "count": 407
+      },
+      {
+        "value": "fleet_user",
+        "count": 33
+      },
+      {
+        "value": "admin",
+        "count": 26
+      }
+    ]
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.status",
+    "states": [
+      "active",
+      "deactivated"
+    ],
+    "dominantState": "active",
+    "distribution": [
+      {
+        "value": "active",
+        "count": 260
+      },
+      {
+        "value": "deactivated",
+        "count": 206
+      }
+    ]
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.duty_status",
+    "states": [
+      "off_duty",
+      "driving"
+    ],
+    "dominantState": "off_duty",
+    "distribution": [
+      {
+        "value": "off_duty",
+        "count": 404
+      },
+      {
+        "value": "driving",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "system": "motive",
+    "endpoint": "/v1/users",
+    "field": "user.eld_mode",
+    "states": [
+      "exempt",
+      "logs"
+    ],
+    "dominantState": "exempt",
+    "distribution": [
+      {
+        "value": "exempt",
+        "count": 401
+      },
+      {
+        "value": "logs",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "system": "fieldroutes",
+    "endpoint": "/api/employee/get",
+    "field": "active",
+    "states": [
+      "1"
+    ],
+    "dominantState": "1",
+    "distribution": [
+      {
+        "value": "1",
+        "count": 430
+      }
+    ]
+  }
+]

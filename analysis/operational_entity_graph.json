@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "motive.users",
+      "system": "motive"
+    },
+    {
+      "id": "motive.vehicle_locations",
+      "system": "motive"
+    },
+    {
+      "id": "fieldroutes.employee_search",
+      "system": "fieldroutes"
+    },
+    {
+      "id": "fieldroutes.employee_get",
+      "system": "fieldroutes"
+    }
+  ],
+  "edges": [
+    {
+      "from": "motive.vehicle_locations",
+      "to": "motive.users",
+      "label": "current_driver.id -> user.id",
+      "confidence": "high"
+    },
+    {
+      "from": "fieldroutes.employee_search",
+      "to": "fieldroutes.employee_get",
+      "label": "employeeIDs -> employeeID hydration",
+      "confidence": "high"
+    },
+    {
+      "from": "fieldroutes.employee_get",
+      "to": "fieldroutes.employee_get",
+      "label": "supervisorID -> employeeID",
+      "confidence": "low"
+    }
+  ]
+}

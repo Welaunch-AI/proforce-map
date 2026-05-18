@@ -1,0 +1,18 @@
+{
+  "driver_current_vehicle_to_vehicle": {
+    "observedReferences": 51,
+    "validJoinRate": 100,
+    "orphanRate": 0
+  },
+  "vehicle_current_driver_to_driver": {
+    "observedReferences": 5,
+    "validJoinRate": 100,
+    "orphanRate": 0
+  },
+  "mutualConsistency": {
+    "comparableAssignments": 1,
+    "consistentAssignments": 1,
+    "consistencyRate": 100,
+    "asymmetryCount": 0
+  }
+}

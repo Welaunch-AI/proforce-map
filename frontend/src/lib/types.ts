@@ -24,6 +24,11 @@ export type Employee = {
   date_updated?: string | null
   start_city?: string | null
   start_state?: string | null
+  start_address?: string | null
+  start_zip?: string | null
+  start_lat?: number | null
+  start_lng?: number | null
+  pic?: string | null
   [key: string]: unknown
 }
 

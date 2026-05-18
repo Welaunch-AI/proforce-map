@@ -39,6 +39,12 @@ function isMonospaceField(key: string, value: unknown): boolean {
   )
 }
 
+function hasDisplayValue(value: unknown): boolean {
+  if (value == null) return false
+  if (typeof value === 'string') return value.trim() !== ''
+  return true
+}
+
 export function TechniciansPage() {
   const { data: technicians, loading } = useTechnicians()
   const { data: appointments } = useAppointments({ onlyToday: false })
@@ -196,19 +202,34 @@ export function TechniciansPage() {
                       <p className="mono mt-2 text-xl font-bold">{selected.appointments.length}</p>
                     </div>
                   </div>
-                  <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-                    <p className="mono text-xs uppercase text-[var(--text-secondary)]">
-                      Location and image
-                    </p>
-                    <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
-                      <p className="text-sm text-[var(--text-primary)]">
-                        {String(selected.start_city ?? '-')}, {String(selected.start_state ?? '-')}
+                  {[
+                    selected.start_address,
+                    selected.start_city,
+                    selected.start_state,
+                    selected.start_zip,
+                    selected.start_lat,
+                    selected.start_lng,
+                  ].some(hasDisplayValue) && (
+                    <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
+                      <p className="mono text-xs uppercase text-[var(--text-secondary)]">
+                        Location
                       </p>
-                      <p className="mono break-all text-xs text-[var(--text-secondary)]">
-                        PIC: {technicianPicUrl(selected) ?? '-'}
-                      </p>
+                      <div className="mt-2 space-y-1">
+                        <p className="text-sm text-[var(--text-primary)]">
+                          {String(selected.start_address ?? '-')}
+                        </p>
+                        <p className="text-sm text-[var(--text-primary)]">
+                          {String(selected.start_city ?? '-')}, {String(selected.start_state ?? '-')}{' '}
+                          {String(selected.start_zip ?? '')}
+                        </p>
+                        {hasDisplayValue(selected.start_lat) && hasDisplayValue(selected.start_lng) && (
+                          <p className="mono text-xs text-[var(--text-secondary)]">
+                            {String(selected.start_lat)}, {String(selected.start_lng)}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
                     <p className="mono text-xs uppercase text-[var(--text-secondary)]">
@@ -250,7 +271,7 @@ export function TechniciansPage() {
                   <div className="mt-2 max-h-[67vh] overflow-auto pr-1">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                       {Object.entries(selected)
-                        .filter(([key]) => key !== 'appointments')
+                        .filter(([key, value]) => key !== 'appointments' && key !== 'pic' && hasDisplayValue(value))
                         .map(([key, value]) => (
                           <div
                             key={key}

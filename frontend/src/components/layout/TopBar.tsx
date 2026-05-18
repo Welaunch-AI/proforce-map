@@ -5,6 +5,7 @@ const titles: Record<string, string> = {
   '/': 'Dashboard',
   '/appointments': 'Appointments',
   '/technicians': 'Technicians',
+  '/map': 'Technician Map',
 }
 
 export function TopBar() {

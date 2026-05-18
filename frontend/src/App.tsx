@@ -3,6 +3,7 @@ import { Sidebar } from './components/layout/Sidebar'
 import { TopBar } from './components/layout/TopBar'
 import { AppointmentsPage } from './pages/Appointments'
 import { DashboardPage } from './pages/Dashboard'
+import { MapPage } from './pages/Map'
 import { TechniciansPage } from './pages/Technicians'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<DashboardPage />} />
               <Route path="/appointments" element={<AppointmentsPage />} />
               <Route path="/technicians" element={<TechniciansPage />} />
+              <Route path="/map" element={<MapPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

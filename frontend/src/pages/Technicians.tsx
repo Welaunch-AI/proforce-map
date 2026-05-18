@@ -50,6 +50,7 @@ export function TechniciansPage() {
   const { data: appointments } = useAppointments({ onlyToday: false })
   const [selected, setSelected] = useState<TechnicianModalData | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
+  const [search, setSearch] = useState('')
 
   const sortedTechnicians = useMemo(() => {
     return [...technicians].sort((a, b) => {
@@ -69,21 +70,47 @@ export function TechniciansPage() {
     return counts
   }, [appointments])
 
+  const visibleTechnicians = useMemo(() => {
+    const q = search.trim().toLowerCase()
+    if (!q) return sortedTechnicians
+    return sortedTechnicians.filter((tech) => {
+      const haystack = [
+        fullName(tech),
+        String(tech.id ?? ''),
+        String(tech.start_city ?? ''),
+        String(tech.start_state ?? ''),
+        String(tech.start_address ?? ''),
+      ]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(q)
+    })
+  }, [sortedTechnicians, search])
+
   return (
     <div className="space-y-4">
+      <div className="glass-panel rounded-xl p-3">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search technician by name, ID, city, state, address..."
+          className="mono w-full rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] p-2 text-sm"
+        />
+      </div>
       {loading ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }).map((_, idx) => (
             <div key={idx} className="skeleton h-[190px] rounded-xl" />
           ))}
         </div>
-      ) : technicians.length === 0 ? (
+      ) : visibleTechnicians.length === 0 ? (
         <div className="glass-panel rounded-xl p-10 text-center text-sm text-[var(--text-secondary)]">
-          No active technicians found.
+          No technicians match your search.
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {sortedTechnicians.map((tech) => {
+          {visibleTechnicians.map((tech) => {
             const name = fullName(tech)
             const count = appointmentCount.get(idKey(tech.id)) ?? 0
             const techKey = idKey(tech.id)

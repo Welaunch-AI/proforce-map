@@ -52,6 +52,7 @@ function hasValue(value: unknown): boolean {
 export function AppointmentsPage() {
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
+  const [search, setSearch] = useState('')
   const { data: appointments, loading } = useAppointments({
     onlyToday: false,
     dateFrom: fromDate || undefined,
@@ -79,6 +80,24 @@ export function AppointmentsPage() {
     return appointments.filter((a) => {
       if (statusFilter !== 'all' && a.status_text !== statusFilter) return false
       if (techFilter !== 'all' && idKey(a.assigned_tech_id) !== techFilter) return false
+      if (search.trim()) {
+        const query = search.trim().toLowerCase()
+        const assignedTech = fullName(employeeMap.get(idKey(a.assigned_tech_id)))
+        const employee = fullName(employeeMap.get(idKey(a.employee_id)))
+        const servicedBy = fullName(employeeMap.get(idKey(a.serviced_by_id)))
+        const haystack = [
+          String(a.id ?? ''),
+          String(a.customer_id ?? ''),
+          String(a.status_text ?? ''),
+          String(a.appointment_date ?? ''),
+          assignedTech,
+          employee,
+          servicedBy,
+        ]
+          .join(' ')
+          .toLowerCase()
+        if (!haystack.includes(query)) return false
+      }
       if (attributeFilters.length > 0) {
         const map = new Map(ATTRIBUTE_FILTERS.map((f) => [f.key, f]))
         const matches = attributeFilters.every((filterKey) => {
@@ -90,7 +109,7 @@ export function AppointmentsPage() {
       }
       return true
     })
-  }, [appointments, statusFilter, techFilter, attributeFilters])
+  }, [appointments, statusFilter, techFilter, attributeFilters, search, employeeMap])
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const pageRows = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
@@ -98,6 +117,18 @@ export function AppointmentsPage() {
   return (
     <div className="space-y-4">
       <div className="glass-panel rounded-xl p-3">
+        <div className="mb-3">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value)
+              setPage(1)
+            }}
+            placeholder="Search by appointment ID, customer ID, status, technician..."
+            className="mono w-full rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] p-2 text-sm"
+          />
+        </div>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
           <select
             value={statusFilter}

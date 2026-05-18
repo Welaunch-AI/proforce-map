@@ -1,7 +1,9 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { BriefcaseBusiness, Home } from 'lucide-react'
 import { useMemo, useRef, useState } from 'react'
 import Map, { Marker, Popup, type MapRef } from 'react-map-gl/mapbox'
+import { DetailSheet } from '../components/ui/DetailSheet'
 import { InitialsAvatar } from '../components/ui/InitialsAvatar'
 import { StatusBadge } from '../components/ui/StatusBadge'
 import { useAppointments } from '../hooks/useAppointments'
@@ -26,6 +28,7 @@ export function MapPage() {
   const { data: appointments } = useAppointments({ onlyToday: false })
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null)
+  const [selectedTechnicianModal, setSelectedTechnicianModal] = useState<Employee | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
   const mapRef = useRef<MapRef | null>(null)
 
@@ -230,10 +233,14 @@ export function MapPage() {
                     setSelectedAppointmentId(null)
                     setSelectedId(key)
                     focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 11.5)
+                    setSelectedTechnicianModal(tech)
                   }}
                 >
                   <div className="flex flex-col items-center">
-                    <span className="h-2 w-2 rounded-full bg-[var(--accent-primary)] shadow-[0_0_10px_var(--accent-glow)]" />
+                    <span className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[#D1D9E6] bg-white text-[#2563EB] shadow-[0_8px_14px_rgba(0,0,0,0.28)]">
+                      <Home size={13} strokeWidth={2.2} />
+                      <span className="absolute -bottom-1 h-2 w-2 rotate-45 border-b border-r border-[#D1D9E6] bg-white" />
+                    </span>
                     <span className="mt-1 rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-0.5 text-[10px] text-[var(--text-primary)]">
                       {fullName(tech)}
                     </span>
@@ -253,34 +260,13 @@ export function MapPage() {
                   focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 12.5)
                 }}
               >
-                <span className="block h-2.5 w-2.5 rounded-full border border-[var(--bg-base)] bg-[var(--accent-warning)] shadow-[0_0_8px_var(--accent-warning)]" />
+                <span className="relative flex h-7 w-7 items-center justify-center rounded-md border border-[#E2C27A] bg-[#1E1610] text-[var(--accent-warning)] shadow-[0_6px_12px_rgba(0,0,0,0.28)]">
+                  <BriefcaseBusiness size={12} strokeWidth={2.1} />
+                  <span className="absolute -bottom-1 h-2 w-2 rotate-45 border-b border-r border-[#E2C27A] bg-[#1E1610]" />
+                </span>
               </Marker>
             ))}
 
-            {selected && (
-              <Popup
-                className="ops-popup"
-                closeButton
-                closeOnClick={false}
-                anchor="top"
-                longitude={Number(selected.start_lng)}
-                latitude={Number(selected.start_lat)}
-                offset={20}
-                onClose={resetMapSelection}
-              >
-                <div className="min-w-[220px] bg-[var(--bg-surface)] p-2 text-[var(--text-primary)]">
-                  <p className="text-sm font-medium">{fullName(selected)}</p>
-                  <p className="mono text-xs text-[var(--text-secondary)]">ID {String(selected.id)}</p>
-                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
-                    {String(selected.start_address ?? '-')}, {String(selected.start_city ?? '-')},{' '}
-                    {String(selected.start_state ?? '-')} {String(selected.start_zip ?? '')}
-                  </p>
-                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
-                    {Number(selected.start_lat).toFixed(4)}, {Number(selected.start_lng).toFixed(4)}
-                  </p>
-                </div>
-              </Popup>
-            )}
             {selectedAppointment && (
               <Popup
                 className="ops-popup"
@@ -363,6 +349,16 @@ export function MapPage() {
         </div>
         </aside>
       </div>
+      <DetailSheet
+        open={Boolean(selectedTechnicianModal)}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedTechnicianModal(null)
+          }
+        }}
+        title="Technician details"
+        data={selectedTechnicianModal}
+      />
     </div>
   )
 }

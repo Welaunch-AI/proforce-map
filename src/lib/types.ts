@@ -12,6 +12,10 @@ export type Appointment = {
   customer_id?: string | number | null
   synced_at?: string | null
   notes?: string | null
+  lat_in?: number | null
+  long_in?: number | null
+  lat_out?: number | null
+  long_out?: number | null
   [key: string]: unknown
 }
 

@@ -3,9 +3,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useMemo, useRef, useState } from 'react'
 import Map, { Marker, Popup, type MapRef } from 'react-map-gl/mapbox'
 import { InitialsAvatar } from '../components/ui/InitialsAvatar'
+import { StatusBadge } from '../components/ui/StatusBadge'
+import { useAppointments } from '../hooks/useAppointments'
 import { useTechnicians } from '../hooks/useTechnicians'
-import type { Employee } from '../lib/types'
-import { fullName, idKey } from '../lib/utils'
+import type { Appointment, Employee } from '../lib/types'
+import { formatDate, fullName, idKey } from '../lib/utils'
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
 const PIC_CDN_BASE =
@@ -21,7 +23,9 @@ function technicianPicUrl(tech: Employee): string | null {
 
 export function MapPage() {
   const { data: technicians, loading } = useTechnicians()
+  const { data: appointments } = useAppointments({ onlyToday: false })
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
   const mapRef = useRef<MapRef | null>(null)
 
@@ -54,8 +58,32 @@ export function MapPage() {
   const selected =
     sortedWithCoords.find((t) => idKey(t.id) === selectedId) ?? sortedWithCoords[0] ?? null
 
+  const appointmentsWithCoords = useMemo(() => {
+    return appointments
+      .map((appt) => {
+        const latIn = typeof appt.lat_in === 'number' ? appt.lat_in : null
+        const lngIn = typeof appt.long_in === 'number' ? appt.long_in : null
+        const latOut = typeof appt.lat_out === 'number' ? appt.lat_out : null
+        const lngOut = typeof appt.long_out === 'number' ? appt.long_out : null
+        const latitude = latIn ?? latOut
+        const longitude = lngIn ?? lngOut
+        if (latitude == null || longitude == null) return null
+        return { ...appt, map_lat: latitude, map_lng: longitude }
+      })
+      .filter((appt): appt is Appointment & { map_lat: number; map_lng: number } => {
+        if (!appt) return false
+        if (!Number.isFinite(appt.map_lat) || !Number.isFinite(appt.map_lng)) return false
+        // Exclude default/invalid zero coordinates.
+        if (appt.map_lat === 0 || appt.map_lng === 0) return false
+        return true
+      })
+  }, [appointments])
+
+  const selectedAppointment =
+    appointmentsWithCoords.find((a) => idKey(a.id) === selectedAppointmentId) ?? null
+
   const zoomToFit = () => {
-    if (!mapRef.current || sortedWithCoords.length === 0) return
+    if (!mapRef.current || (sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0)) return
 
     let minLng = Number.POSITIVE_INFINITY
     let minLat = Number.POSITIVE_INFINITY
@@ -65,6 +93,14 @@ export function MapPage() {
     sortedWithCoords.forEach((tech) => {
       const lng = Number(tech.start_lng)
       const lat = Number(tech.start_lat)
+      if (lng < minLng) minLng = lng
+      if (lat < minLat) minLat = lat
+      if (lng > maxLng) maxLng = lng
+      if (lat > maxLat) maxLat = lat
+    })
+    appointmentsWithCoords.forEach((appt) => {
+      const lng = Number(appt.map_lng)
+      const lat = Number(appt.map_lat)
       if (lng < minLng) minLng = lng
       if (lat < minLat) minLat = lat
       if (lng > maxLng) maxLng = lng
@@ -94,6 +130,10 @@ export function MapPage() {
           <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
             <p className="mono text-xs text-[var(--text-secondary)]">With GPS</p>
             <p className="mono mt-1 text-xl font-bold">{withCoords.length}</p>
+          </div>
+          <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
+            <p className="mono text-xs text-[var(--text-secondary)]">Appointments GPS</p>
+            <p className="mono mt-1 text-xl font-bold">{appointmentsWithCoords.length}</p>
           </div>
         </div>
         <div className="mt-4 space-y-2 overflow-auto pr-1 xl:max-h-[calc(100vh-17rem)]">
@@ -140,6 +180,20 @@ export function MapPage() {
               </button>
             )
           })}
+          {appointmentsWithCoords.slice(0, 20).map((appt) => (
+            <button
+              type="button"
+              key={`appt-list-${idKey(appt.id)}`}
+              onClick={() => setSelectedAppointmentId(idKey(appt.id))}
+              className="w-full rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-2 text-left"
+            >
+              <p className="mono text-xs">Appt #{String(appt.id)}</p>
+              <p className="mono text-[11px] text-[var(--text-secondary)]">
+                {formatDate(appt.appointment_date)} | {String(appt.map_lat.toFixed(4))},{' '}
+                {String(appt.map_lng.toFixed(4))}
+              </p>
+            </button>
+          ))}
           {!loading && sortedWithCoords.length === 0 && (
             <p className="text-sm text-[var(--text-secondary)]">
               No technicians with latitude/longitude found.
@@ -181,6 +235,17 @@ export function MapPage() {
                 </Marker>
               )
             })}
+            {appointmentsWithCoords.map((appt) => (
+              <Marker
+                key={`appt-${idKey(appt.id)}`}
+                longitude={Number(appt.map_lng)}
+                latitude={Number(appt.map_lat)}
+                anchor="center"
+                onClick={() => setSelectedAppointmentId(idKey(appt.id))}
+              >
+                <span className="block h-2.5 w-2.5 rounded-full border border-[var(--bg-base)] bg-[var(--accent-warning)] shadow-[0_0_8px_var(--accent-warning)]" />
+              </Marker>
+            ))}
 
             {selected && (
               <Popup
@@ -204,6 +269,31 @@ export function MapPage() {
                 </div>
               </Popup>
             )}
+            {selectedAppointment && (
+              <Popup
+                closeButton={false}
+                closeOnClick={false}
+                anchor="top"
+                longitude={Number(selectedAppointment.map_lng)}
+                latitude={Number(selectedAppointment.map_lat)}
+                offset={18}
+              >
+                <div className="min-w-[230px] bg-[var(--bg-surface)] p-2 text-[var(--text-primary)]">
+                  <p className="mono text-xs">Appointment #{String(selectedAppointment.id)}</p>
+                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
+                    {formatDate(selectedAppointment.appointment_date)} |{' '}
+                    {selectedAppointment.start_time_raw ?? '-'} -{' '}
+                    {selectedAppointment.end_time_raw ?? '-'}
+                  </p>
+                  <div className="mt-1">
+                    <StatusBadge status={selectedAppointment.status_text} />
+                  </div>
+                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
+                    Customer: {String(selectedAppointment.customer_id ?? '-')}
+                  </p>
+                </div>
+              </Popup>
+            )}
           </Map>
         )}
         {MAPBOX_TOKEN && (
@@ -211,7 +301,7 @@ export function MapPage() {
             <button
               type="button"
               onClick={zoomToFit}
-              disabled={sortedWithCoords.length === 0}
+              disabled={sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0}
               className="mono pointer-events-auto rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-3 py-1 text-xs uppercase text-[var(--text-primary)] disabled:opacity-40"
             >
               Zoom to Fit

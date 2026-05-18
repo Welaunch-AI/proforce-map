@@ -158,12 +158,29 @@ function mapAppointmentRow(a: JsonObject) {
 }
 
 function mapEmployeeRow(e: JsonObject) {
+  const accessProfileName =
+    e.accessControlProfileName == null
+      ? null
+      : String(e.accessControlProfileName);
   return {
     id: toNullableId(e.employeeID),
     office_id: toNullableId(e.officeID),
     active: e.active == null ? null : String(e.active),
     fname: e.fname == null ? null : String(e.fname),
     lname: e.lname == null ? null : String(e.lname),
+    initials: e.initials == null ? null : String(e.initials),
+    employee_type: e.type == null ? null : String(e.type),
+    linked_employee_ids: e.linkedEmployeeIDs == null ? null : String(e.linkedEmployeeIDs),
+    access_control_profile_id: toNullableId(e.accessControlProfileID),
+    access_control_profile_name: accessProfileName,
+    primary_team: toNullableId(e.primaryTeam),
+    license_number: e.licenseNumber == null ? null : String(e.licenseNumber),
+    start_address: e.startAddress == null ? null : String(e.startAddress),
+    start_city: e.startCity == null ? null : String(e.startCity),
+    start_state: e.startState == null ? null : String(e.startState),
+    start_zip: e.startZip == null ? null : String(e.startZip),
+    start_lat: toNullableNumber(e.startLat),
+    start_lng: toNullableNumber(e.startLng),
     date_updated: toNullableTimestamp(e.dateUpdated),
     synced_at: new Date().toISOString(),
   };

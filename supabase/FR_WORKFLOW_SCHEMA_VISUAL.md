@@ -17,6 +17,19 @@ erDiagram
     text active
     text fname
     text lname
+    text initials
+    text employee_type
+    text linked_employee_ids
+    bigint access_control_profile_id
+    text access_control_profile_name
+    bigint primary_team
+    text license_number
+    text start_address
+    text start_city
+    text start_state
+    text start_zip
+    numeric start_lat
+    numeric start_lng
     text display_name
     timestamptz date_updated
     timestamptz synced_at

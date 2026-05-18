@@ -26,6 +26,11 @@ Additional fields now ingested on appointments:
 - coordinates: `lat_in`, `lat_out`, `long_in`, `long_out`
 - notes payload: `notes`, `office_notes`, `appointment_notes`
 
+Additional fields now ingested on employees:
+- identity/profile: `initials`, `employee_type`, `linked_employee_ids`, `license_number`
+- control/team: `access_control_profile_id`, `access_control_profile_name`, `primary_team`
+- home/start address: `start_address`, `start_city`, `start_state`, `start_zip`, `start_lat`, `start_lng`
+
 ## Important behavior
 
 - No appointment fetch filter by office ID is applied.

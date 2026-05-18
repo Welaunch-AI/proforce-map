@@ -66,6 +66,19 @@ This document defines how FieldRoutes payloads map into Supabase workflow cache 
 - `active` <- `employee.active` (text)
 - `fname` <- `employee.fname` (text)
 - `lname` <- `employee.lname` (text)
+- `initials` <- `employee.initials` (text)
+- `employee_type` <- `employee.type` (text)
+- `linked_employee_ids` <- `employee.linkedEmployeeIDs` (text)
+- `access_control_profile_id` <- `employee.accessControlProfileID` (bigint nullable)
+- `access_control_profile_name` <- `employee.accessControlProfileName` (text)
+- `primary_team` <- `employee.primaryTeam` (bigint nullable)
+- `license_number` <- `employee.licenseNumber` (text)
+- `start_address` <- `employee.startAddress` (text)
+- `start_city` <- `employee.startCity` (text)
+- `start_state` <- `employee.startState` (text)
+- `start_zip` <- `employee.startZip` (text)
+- `start_lat` <- normalized numeric `employee.startLat`
+- `start_lng` <- normalized numeric `employee.startLng`
 - `date_updated` <- normalized `employee.dateUpdated` (timestamptz nullable)
 - `synced_at` <- sync timestamp (`now()`)
 

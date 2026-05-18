@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { BriefcaseBusiness, Home } from 'lucide-react'
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Map, { Marker, Popup, type MapRef } from 'react-map-gl/mapbox'
 import { DetailSheet } from '../components/ui/DetailSheet'
 import { InitialsAvatar } from '../components/ui/InitialsAvatar'
@@ -31,6 +31,7 @@ export function MapPage() {
   const [selectedTechnicianModal, setSelectedTechnicianModal] = useState<Employee | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
   const mapRef = useRef<MapRef | null>(null)
+  const mapShellRef = useRef<HTMLElement | null>(null)
 
   const withCoords = useMemo(
     () =>
@@ -134,6 +135,16 @@ export function MapPage() {
     zoomToFit()
   }
 
+  useEffect(() => {
+    const target = mapShellRef.current
+    if (!target) return
+    const observer = new ResizeObserver(() => {
+      mapRef.current?.resize()
+    })
+    observer.observe(target)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="h-[calc(100vh-4rem)] p-2 md:p-3">
       <div className="grid h-full min-h-0 grid-cols-1 gap-3 xl:grid-cols-[320px_1fr_320px]">
@@ -207,7 +218,10 @@ export function MapPage() {
         </div>
         </aside>
 
-        <section className="glass-panel relative min-h-0 overflow-hidden rounded-xl">
+        <section
+          ref={mapShellRef}
+          className="glass-panel relative min-h-0 overflow-hidden rounded-xl"
+        >
         {!MAPBOX_TOKEN ? (
           <div className="flex h-full items-center justify-center p-6 text-center text-sm text-[var(--text-secondary)]">
             Missing `VITE_MAPBOX_TOKEN` in environment.
@@ -298,14 +312,16 @@ export function MapPage() {
         )}
         {MAPBOX_TOKEN && (
           <div className="pointer-events-none absolute right-3 top-3 z-10">
-            <button
-              type="button"
-              onClick={zoomToFit}
-              disabled={sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0}
-              className="mono pointer-events-auto rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-3 py-1 text-xs uppercase text-[var(--text-primary)] disabled:opacity-40"
-            >
-              Zoom to Fit
-            </button>
+            <div className="pointer-events-auto rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)]/95 p-1 shadow-[0_6px_14px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={zoomToFit}
+                disabled={sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0}
+                className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] px-3 py-1 text-xs uppercase text-[var(--text-primary)] disabled:opacity-40"
+              >
+                Zoom to Fit
+              </button>
+            </div>
           </div>
         )}
         </section>

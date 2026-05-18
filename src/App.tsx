@@ -15,11 +15,12 @@ function App() {
           <TopBar />
           <main className="min-h-0 flex-1 p-4 md:p-6">
             <Routes>
-              <Route path="/" element={<DashboardPage />} />
+              <Route path="/" element={<Navigate to="/map" replace />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/appointments" element={<AppointmentsPage />} />
               <Route path="/technicians" element={<TechniciansPage />} />
               <Route path="/map" element={<MapPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/map" replace />} />
             </Routes>
           </main>
         </div>

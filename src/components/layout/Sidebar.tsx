@@ -3,10 +3,10 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: Grid2x2 },
+  { to: '/map', label: 'Map', icon: MapPinned },
+  { to: '/dashboard', label: 'Dashboard', icon: Grid2x2 },
   { to: '/appointments', label: 'Appointments', icon: CalendarDays },
   { to: '/technicians', label: 'Technicians', icon: Users },
-  { to: '/map', label: 'Map', icon: MapPinned },
 ]
 
 export function Sidebar() {

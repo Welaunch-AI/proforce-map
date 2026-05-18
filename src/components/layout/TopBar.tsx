@@ -2,7 +2,8 @@ import { useLocation } from 'react-router-dom'
 import { SyncIndicator } from './SyncIndicator'
 
 const titles: Record<string, string> = {
-  '/': 'Dashboard',
+  '/': 'Technician Map',
+  '/dashboard': 'Dashboard',
   '/appointments': 'Appointments',
   '/technicians': 'Technicians',
   '/map': 'Technician Map',

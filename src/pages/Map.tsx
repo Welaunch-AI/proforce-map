@@ -55,8 +55,7 @@ export function MapPage() {
     }
   }, [withCoords])
 
-  const selected =
-    sortedWithCoords.find((t) => idKey(t.id) === selectedId) ?? sortedWithCoords[0] ?? null
+  const selected = sortedWithCoords.find((t) => idKey(t.id) === selectedId) ?? null
 
   const appointmentsWithCoords = useMemo(() => {
     return appointments
@@ -81,6 +80,16 @@ export function MapPage() {
 
   const selectedAppointment =
     appointmentsWithCoords.find((a) => idKey(a.id) === selectedAppointmentId) ?? null
+
+  const focusMapPoint = (lat: number, lng: number, zoom = 12) => {
+    if (!mapRef.current) return
+    mapRef.current.flyTo({
+      center: [lng, lat],
+      zoom,
+      duration: 800,
+      essential: true,
+    })
+  }
 
   const zoomToFit = () => {
     if (!mapRef.current || (sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0)) return
@@ -116,27 +125,30 @@ export function MapPage() {
     )
   }
 
+  const resetMapSelection = () => {
+    setSelectedId(null)
+    setSelectedAppointmentId(null)
+    zoomToFit()
+  }
+
   return (
-    <div className="grid h-[calc(100vh-8.5rem)] grid-cols-1 gap-4 xl:grid-cols-[360px_1fr]">
-      <aside className="glass-panel rounded-xl p-4">
+    <div className="h-[calc(100vh-4rem)] p-2 md:p-3">
+      <div className="grid h-full min-h-0 grid-cols-1 gap-3 xl:grid-cols-[320px_1fr_320px]">
+        <aside className="glass-panel flex min-h-0 flex-col overflow-hidden rounded-xl p-4">
         <h2 className="text-sm uppercase tracking-[0.12em] text-[var(--text-secondary)]">
           Technician Map
         </h2>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-            <p className="mono text-xs text-[var(--text-secondary)]">Active</p>
-            <p className="mono mt-1 text-xl font-bold">{technicians.length}</p>
+            <p className="mono text-[11px] text-[var(--text-secondary)]">Active</p>
+            <p className="mono mt-1 text-lg font-bold">{technicians.length}</p>
           </div>
           <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-            <p className="mono text-xs text-[var(--text-secondary)]">With GPS</p>
-            <p className="mono mt-1 text-xl font-bold">{withCoords.length}</p>
-          </div>
-          <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-            <p className="mono text-xs text-[var(--text-secondary)]">Appointments GPS</p>
-            <p className="mono mt-1 text-xl font-bold">{appointmentsWithCoords.length}</p>
+            <p className="mono text-[11px] text-[var(--text-secondary)]">With GPS</p>
+            <p className="mono mt-1 text-lg font-bold">{withCoords.length}</p>
           </div>
         </div>
-        <div className="mt-4 space-y-2 overflow-auto pr-1 xl:max-h-[calc(100vh-17rem)]">
+        <div className="mt-4 min-h-0 flex-1 space-y-2 overflow-auto pr-1">
           {sortedWithCoords.map((tech) => {
             const key = idKey(tech.id)
             const isActive = key === idKey(selected?.id)
@@ -146,7 +158,11 @@ export function MapPage() {
               <button
                 type="button"
                 key={key}
-                onClick={() => setSelectedId(key)}
+                onClick={() => {
+                  setSelectedAppointmentId(null)
+                  setSelectedId(key)
+                  focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 11.5)
+                }}
                 className={`flex w-full items-center justify-between rounded-lg border p-2 text-left ${
                   isActive
                     ? 'border-[var(--accent-primary)] bg-[var(--bg-elevated)]'
@@ -180,29 +196,15 @@ export function MapPage() {
               </button>
             )
           })}
-          {appointmentsWithCoords.slice(0, 20).map((appt) => (
-            <button
-              type="button"
-              key={`appt-list-${idKey(appt.id)}`}
-              onClick={() => setSelectedAppointmentId(idKey(appt.id))}
-              className="w-full rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-2 text-left"
-            >
-              <p className="mono text-xs">Appt #{String(appt.id)}</p>
-              <p className="mono text-[11px] text-[var(--text-secondary)]">
-                {formatDate(appt.appointment_date)} | {String(appt.map_lat.toFixed(4))},{' '}
-                {String(appt.map_lng.toFixed(4))}
-              </p>
-            </button>
-          ))}
           {!loading && sortedWithCoords.length === 0 && (
             <p className="text-sm text-[var(--text-secondary)]">
               No technicians with latitude/longitude found.
             </p>
           )}
         </div>
-      </aside>
+        </aside>
 
-      <section className="glass-panel relative overflow-hidden rounded-xl">
+        <section className="glass-panel relative min-h-0 overflow-hidden rounded-xl">
         {!MAPBOX_TOKEN ? (
           <div className="flex h-full items-center justify-center p-6 text-center text-sm text-[var(--text-secondary)]">
             Missing `VITE_MAPBOX_TOKEN` in environment.
@@ -224,7 +226,11 @@ export function MapPage() {
                   longitude={Number(tech.start_lng)}
                   latitude={Number(tech.start_lat)}
                   anchor="bottom"
-                  onClick={() => setSelectedId(key)}
+                  onClick={() => {
+                    setSelectedAppointmentId(null)
+                    setSelectedId(key)
+                    focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 11.5)
+                  }}
                 >
                   <div className="flex flex-col items-center">
                     <span className="h-2 w-2 rounded-full bg-[var(--accent-primary)] shadow-[0_0_10px_var(--accent-glow)]" />
@@ -241,7 +247,11 @@ export function MapPage() {
                 longitude={Number(appt.map_lng)}
                 latitude={Number(appt.map_lat)}
                 anchor="center"
-                onClick={() => setSelectedAppointmentId(idKey(appt.id))}
+                onClick={() => {
+                  setSelectedId(null)
+                  setSelectedAppointmentId(idKey(appt.id))
+                  focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 12.5)
+                }}
               >
                 <span className="block h-2.5 w-2.5 rounded-full border border-[var(--bg-base)] bg-[var(--accent-warning)] shadow-[0_0_8px_var(--accent-warning)]" />
               </Marker>
@@ -249,12 +259,14 @@ export function MapPage() {
 
             {selected && (
               <Popup
-                closeButton={false}
+                className="ops-popup"
+                closeButton
                 closeOnClick={false}
                 anchor="top"
                 longitude={Number(selected.start_lng)}
                 latitude={Number(selected.start_lat)}
                 offset={20}
+                onClose={resetMapSelection}
               >
                 <div className="min-w-[220px] bg-[var(--bg-surface)] p-2 text-[var(--text-primary)]">
                   <p className="text-sm font-medium">{fullName(selected)}</p>
@@ -271,12 +283,14 @@ export function MapPage() {
             )}
             {selectedAppointment && (
               <Popup
-                closeButton={false}
+                className="ops-popup"
+                closeButton
                 closeOnClick={false}
                 anchor="top"
                 longitude={Number(selectedAppointment.map_lng)}
                 latitude={Number(selectedAppointment.map_lat)}
                 offset={18}
+                onClose={resetMapSelection}
               >
                 <div className="min-w-[230px] bg-[var(--bg-surface)] p-2 text-[var(--text-primary)]">
                   <p className="mono text-xs">Appointment #{String(selectedAppointment.id)}</p>
@@ -308,7 +322,47 @@ export function MapPage() {
             </button>
           </div>
         )}
-      </section>
+        </section>
+
+        <aside className="glass-panel flex min-h-0 flex-col overflow-hidden rounded-xl p-3">
+        <p className="mono text-xs uppercase text-[var(--text-secondary)]">Assets Map List</p>
+        <p className="mono mt-1 text-[11px] text-[var(--text-tertiary)]">
+          Appointments with valid coordinates
+        </p>
+        <p className="mono mt-1 text-[11px] text-[var(--text-secondary)]">
+          Appointments GPS: {appointmentsWithCoords.length}
+        </p>
+        <div className="mt-2 min-h-0 flex-1 space-y-2 overflow-auto pr-1">
+          {appointmentsWithCoords.slice(0, 80).map((appt) => (
+            <button
+              type="button"
+              key={`appt-list-${idKey(appt.id)}`}
+              onClick={() => {
+                setSelectedId(null)
+                setSelectedAppointmentId(idKey(appt.id))
+                focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 12.5)
+              }}
+              className={`w-full rounded-lg border p-2 text-left ${
+                idKey(appt.id) === selectedAppointmentId
+                  ? 'border-[var(--accent-warning)] bg-[var(--bg-elevated)]'
+                  : 'border-[var(--bg-border)] bg-[var(--bg-surface)]'
+              }`}
+            >
+              <p className="mono text-xs">Appt #{String(appt.id)}</p>
+              <p className="mono text-[11px] text-[var(--text-secondary)]">
+                {formatDate(appt.appointment_date)} | {String(appt.map_lat.toFixed(4))},{' '}
+                {String(appt.map_lng.toFixed(4))}
+              </p>
+            </button>
+          ))}
+          {appointmentsWithCoords.length === 0 && (
+            <p className="text-xs text-[var(--text-secondary)]">
+              No appointment coordinates available.
+            </p>
+          )}
+        </div>
+        </aside>
+      </div>
     </div>
   )
 }

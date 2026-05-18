@@ -85,3 +85,23 @@ body {
     box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }
+
+.ops-popup .mapboxgl-popup-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-border);
+  box-shadow: none;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.ops-popup .mapboxgl-popup-tip {
+  border-top-color: var(--bg-border) !important;
+  border-bottom-color: var(--bg-border) !important;
+}
+
+.ops-popup .mapboxgl-popup-close-button {
+  color: var(--text-secondary);
+  font-size: 16px;
+  right: 6px;
+  top: 4px;
+}

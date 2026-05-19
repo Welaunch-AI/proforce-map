@@ -98,10 +98,3 @@ body {
   border-top-color: var(--bg-border) !important;
   border-bottom-color: var(--bg-border) !important;
 }
-
-.ops-popup .mapboxgl-popup-close-button {
-  color: var(--text-secondary);
-  font-size: 16px;
-  right: 6px;
-  top: 4px;
-}

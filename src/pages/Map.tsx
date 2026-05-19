@@ -1,9 +1,8 @@
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { BriefcaseBusiness, Home } from 'lucide-react'
+import { BriefcaseBusiness, Home, Satellite } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Map, { Marker, Popup, type MapRef } from 'react-map-gl/mapbox'
-import { DetailSheet } from '../components/ui/DetailSheet'
 import { InitialsAvatar } from '../components/ui/InitialsAvatar'
 import { StatusBadge } from '../components/ui/StatusBadge'
 import { useAppointments } from '../hooks/useAppointments'
@@ -46,12 +45,11 @@ export function MapPage() {
   const { data: appointments } = useAppointments({ onlyToday: false })
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null)
-  const [selectedTechnicianModal, setSelectedTechnicianModal] = useState<Employee | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
   const [techSearch, setTechSearch] = useState('')
   const [apptSearch, setApptSearch] = useState('')
   const [apptStatus, setApptStatus] = useState('all')
-  const [apptImportantOnly, setApptImportantOnly] = useState(false)
+  const [mapTheme, setMapTheme] = useState<'dark' | 'satellite'>('dark')
   const [apptSort, setApptSort] = useState<'recent_added' | 'recent_updated' | 'appointment_date'>(
     'recent_added',
   )
@@ -133,15 +131,6 @@ export function MapPage() {
     const query = apptSearch.trim().toLowerCase()
     const rows = appointmentsWithCoords.filter((appt) => {
       if (apptStatus !== 'all' && String(appt.status_text ?? '') !== apptStatus) return false
-      if (apptImportantOnly) {
-        const hasImportant =
-          String(appt.status_text ?? '').toLowerCase().includes('pending') ||
-          String(appt.status_text ?? '').toLowerCase().includes('in progress') ||
-          String(appt.status_text ?? '').toLowerCase().includes('on the way') ||
-          Boolean(appt.notes) ||
-          Boolean(appt.ticket_id)
-        if (!hasImportant) return false
-      }
       if (!query) return true
       const haystack = [
         String(appt.id ?? ''),
@@ -164,7 +153,7 @@ export function MapPage() {
       if (apptSort === 'appointment_date') return asTime(b.appointment_date) - asTime(a.appointment_date)
       return asTime(b.date_added) - asTime(a.date_added)
     })
-  }, [appointmentsWithCoords, apptImportantOnly, apptSearch, apptSort, apptStatus])
+  }, [appointmentsWithCoords, apptSearch, apptSort, apptStatus])
 
   const focusMapPoint = (lat: number, lng: number, zoom = 12) => {
     if (!mapRef.current) return
@@ -230,9 +219,18 @@ export function MapPage() {
     <div className="h-[calc(100vh-4rem)] p-2 md:p-3">
       <div className="grid h-full min-h-0 grid-cols-1 gap-3 xl:grid-cols-[320px_1fr_320px]">
         <aside className="glass-panel flex min-h-0 flex-col overflow-hidden rounded-xl p-4">
-        <h2 className="text-sm uppercase tracking-[0.12em] text-[var(--text-secondary)]">
-          Technician Map
-        </h2>
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-5 w-5 items-center justify-center rounded-full border border-[#D1D9E6] bg-white text-[#2563EB] shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+            <Home size={10} strokeWidth={2.2} />
+            <span className="absolute -bottom-[3px] h-1.5 w-1.5 rotate-45 border-b border-r border-[#D1D9E6] bg-white" />
+          </span>
+          <h2 className="mono text-xs uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+            Technician Map
+          </h2>
+        </div>
+        <p className="mono mt-1 text-[11px] text-[var(--text-tertiary)]">
+          Technicians with home coordinates
+        </p>
         <div className="mt-2 grid grid-cols-1 gap-2">
           <input
             value={techSearch}
@@ -241,16 +239,9 @@ export function MapPage() {
             className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-xs"
           />
         </div>
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-            <p className="mono text-[11px] text-[var(--text-secondary)]">Active</p>
-            <p className="mono mt-1 text-lg font-bold">{technicians.length}</p>
-          </div>
-          <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
-            <p className="mono text-[11px] text-[var(--text-secondary)]">With GPS</p>
-            <p className="mono mt-1 text-lg font-bold">{filteredTechnicians.length}</p>
-          </div>
-        </div>
+        <p className="mono mt-2 text-[11px] text-[var(--text-secondary)]">
+          Technicians GPS: {filteredTechnicians.length}
+        </p>
         <div className="mt-4 min-h-0 flex-1 space-y-2 overflow-auto pr-1">
           {filteredTechnicians.map((tech) => {
             const key = idKey(tech.id)
@@ -264,7 +255,7 @@ export function MapPage() {
                 onClick={() => {
                   setSelectedAppointmentId(null)
                   setSelectedId(key)
-                  focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 11.5)
+                  focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 15)
                 }}
                 className={`flex w-full items-center justify-between rounded-lg border p-2 text-left ${
                   isActive
@@ -322,7 +313,11 @@ export function MapPage() {
             mapLib={mapboxgl}
             initialViewState={mapCenter}
             style={{ width: '100%', height: '100%' }}
-            mapStyle="mapbox://styles/mapbox/dark-v11"
+            mapStyle={
+              mapTheme === 'dark'
+                ? 'mapbox://styles/mapbox/dark-v11'
+                : 'mapbox://styles/mapbox/satellite-streets-v12'
+            }
           >
             {filteredTechnicians.map((tech) => {
               const key = idKey(tech.id)
@@ -335,8 +330,7 @@ export function MapPage() {
                   onClick={() => {
                     setSelectedAppointmentId(null)
                     setSelectedId(key)
-                    focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 11.5)
-                    setSelectedTechnicianModal(tech)
+                    focusMapPoint(Number(tech.start_lat), Number(tech.start_lng), 15)
                   }}
                 >
                   <div className="flex flex-col items-center">
@@ -360,7 +354,7 @@ export function MapPage() {
                 onClick={() => {
                   setSelectedId(null)
                   setSelectedAppointmentId(idKey(appt.id))
-                  focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 12.5)
+                  focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 16)
                 }}
               >
                 <span className="relative flex h-7 w-7 items-center justify-center rounded-md border border-[#E2C27A] bg-[#1E1610] text-[var(--accent-warning)] shadow-[0_6px_12px_rgba(0,0,0,0.28)]">
@@ -370,10 +364,94 @@ export function MapPage() {
               </Marker>
             ))}
 
+            {selected && (
+              <Popup
+                className="ops-popup"
+                closeButton={false}
+                closeOnClick={false}
+                anchor="top"
+                longitude={Number(selected.start_lng)}
+                latitude={Number(selected.start_lat)}
+                offset={18}
+                onClose={resetMapSelection}
+              >
+                <div className="relative min-w-[280px] bg-[var(--bg-surface)] p-3 text-[var(--text-primary)]">
+                  <button
+                    type="button"
+                    onClick={resetMapSelection}
+                    className="mono absolute right-2 top-2.5 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px]"
+                    aria-label="Close technician popup"
+                  >
+                    ×
+                  </button>
+                  <div className="mb-2 flex items-center gap-3 border-b border-[var(--bg-border)] pb-2">
+                    {(() => {
+                      const picUrl = technicianPicUrl(selected)
+                      const showPic = Boolean(picUrl) && !brokenPics[idKey(selected.id)]
+                      return showPic ? (
+                        <img
+                          src={picUrl ?? ''}
+                          alt={fullName(selected)}
+                          className="h-14 w-14 rounded-full border border-[var(--bg-border)] object-cover shadow-[0_3px_10px_rgba(0,0,0,0.28)]"
+                          onError={() =>
+                            setBrokenPics((prev) => ({
+                              ...prev,
+                              [idKey(selected.id)]: true,
+                            }))
+                          }
+                        />
+                      ) : (
+                        <InitialsAvatar name={fullName(selected)} />
+                      )
+                    })()}
+                    <div className="min-w-0 pt-0.5">
+                      <p className="mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                        Technician
+                      </p>
+                      <p className="truncate text-lg font-semibold leading-tight">
+                        {fullName(selected)}
+                      </p>
+                      <p className="mono text-[11px] text-[var(--text-secondary)]">
+                        ID: {String(selected.id)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="mono text-[11px] uppercase text-[var(--text-secondary)]">
+                        Status
+                      </span>
+                      <StatusBadge status={selected.active === '1' ? 'Active' : 'Inactive'} />
+                    </div>
+
+                    <div className="rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-2">
+                      <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">Home Address</p>
+                      <p className="mt-1 text-xs">
+                        {String(selected.start_address ?? '-')}, {String(selected.start_city ?? '-')},{' '}
+                        {String(selected.start_state ?? '-')} {String(selected.start_zip ?? '')}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-2">
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">Latitude</p>
+                        <p className="mono text-xs">{String(selected.start_lat ?? '-')}</p>
+                      </div>
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">Longitude</p>
+                        <p className="mono text-xs">{String(selected.start_lng ?? '-')}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Popup>
+            )}
+
             {selectedAppointment && (
               <Popup
                 className="ops-popup"
-                closeButton
+                closeButton={false}
                 closeOnClick={false}
                 anchor="top"
                 longitude={Number(selectedAppointment.map_lng)}
@@ -381,21 +459,63 @@ export function MapPage() {
                 offset={18}
                 onClose={resetMapSelection}
               >
-                <div className="min-w-[230px] bg-[var(--bg-surface)] p-2 text-[var(--text-primary)]">
-                  <p className="mono text-xs">Appointment #{String(selectedAppointment.id)}</p>
-                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
-                    {formatDate(selectedAppointment.appointment_date)} |{' '}
-                    {formatTimeRangeEST(
-                      selectedAppointment.start_time_raw,
-                      selectedAppointment.end_time_raw,
-                    )}
-                  </p>
-                  <div className="mt-1">
-                    <StatusBadge status={selectedAppointment.status_text} />
+                <div className="relative min-w-[280px] bg-[var(--bg-surface)] p-3 text-[var(--text-primary)]">
+                  <button
+                    type="button"
+                    onClick={resetMapSelection}
+                    className="mono absolute right-2 top-2 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px]"
+                    aria-label="Close appointment popup"
+                  >
+                    ×
+                  </button>
+                  <div className="mb-2 border-b border-[var(--bg-border)] pb-2">
+                    <p className="mono text-[11px] uppercase tracking-wide text-[var(--text-secondary)]">
+                      Work Order
+                    </p>
+                    <p className="mono text-base font-semibold">
+                      #{String(selectedAppointment.id)}
+                    </p>
                   </div>
-                  <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
-                    Customer: {String(selectedAppointment.customer_id ?? '-')}
-                  </p>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="mono text-[11px] uppercase text-[var(--text-secondary)]">
+                        Status
+                      </span>
+                      <StatusBadge status={selectedAppointment.status_text} />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-2">
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">Date</p>
+                        <p className="mono text-xs">{formatDate(selectedAppointment.appointment_date)}</p>
+                      </div>
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">Time</p>
+                        <p className="mono text-xs">
+                          {formatTimeRangeEST(
+                            selectedAppointment.start_time_raw,
+                            selectedAppointment.end_time_raw,
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-2">
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">
+                          Customer
+                        </p>
+                        <p className="mono text-xs">{String(selectedAppointment.customer_id ?? '-')}</p>
+                      </div>
+                      <div>
+                        <p className="mono text-[10px] uppercase text-[var(--text-secondary)]">
+                          Ticket
+                        </p>
+                        <p className="mono text-xs">{String(selectedAppointment.ticket_id ?? '-')}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Popup>
             )}
@@ -403,11 +523,24 @@ export function MapPage() {
         )}
         {MAPBOX_TOKEN && (
           <div className="pointer-events-none absolute right-3 top-3 z-10">
-            <div className="pointer-events-auto rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)]/95 p-1 shadow-[0_6px_14px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+            <div className="pointer-events-auto flex items-center gap-1 rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)]/95 p-1 shadow-[0_6px_14px_rgba(0,0,0,0.28)] backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setMapTheme((prev) => (prev === 'dark' ? 'satellite' : 'dark'))}
+                className="inline-flex items-center gap-1 rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] px-2 py-1 text-[11px] text-[var(--text-primary)]"
+                title={
+                  mapTheme === 'dark'
+                    ? 'Switch to Satellite + Labels'
+                    : 'Switch to Dark Ops'
+                }
+              >
+                <Satellite size={12} />
+                <span className="mono">{mapTheme === 'dark' ? 'Dark Ops' : 'Satellite'}</span>
+              </button>
               <button
                 type="button"
                 onClick={zoomToFit}
-              disabled={filteredTechnicians.length === 0 && filteredAppointmentsWithCoords.length === 0}
+                disabled={filteredTechnicians.length === 0 && filteredAppointmentsWithCoords.length === 0}
                 className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] px-3 py-1 text-xs uppercase text-[var(--text-primary)] disabled:opacity-40"
               >
                 Zoom to Fit
@@ -418,7 +551,13 @@ export function MapPage() {
         </section>
 
         <aside className="glass-panel flex min-h-0 flex-col overflow-hidden rounded-xl p-3">
-        <p className="mono text-xs uppercase text-[var(--text-secondary)]">Assets Map List</p>
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-5 w-5 items-center justify-center rounded-md border border-[#E2C27A] bg-[#1E1610] text-[var(--accent-warning)] shadow-[0_4px_10px_rgba(0,0,0,0.24)]">
+            <BriefcaseBusiness size={10} strokeWidth={2.1} />
+            <span className="absolute -bottom-[3px] h-1.5 w-1.5 rotate-45 border-b border-r border-[#E2C27A] bg-[#1E1610]" />
+          </span>
+          <p className="mono text-xs uppercase text-[var(--text-secondary)]">Assets Map List</p>
+        </div>
         <p className="mono mt-1 text-[11px] text-[var(--text-tertiary)]">
           Appointments with valid coordinates
         </p>
@@ -452,14 +591,6 @@ export function MapPage() {
               <option value="appointment_date">Appointment Date</option>
             </select>
           </div>
-          <label className="mono flex items-center gap-2 rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-[11px]">
-            <input
-              type="checkbox"
-              checked={apptImportantOnly}
-              onChange={(e) => setApptImportantOnly(e.target.checked)}
-            />
-            Important Only
-          </label>
         </div>
         <p className="mono mt-1 text-[11px] text-[var(--text-secondary)]">
           Appointments GPS: {filteredAppointmentsWithCoords.length}
@@ -472,7 +603,7 @@ export function MapPage() {
               onClick={() => {
                 setSelectedId(null)
                 setSelectedAppointmentId(idKey(appt.id))
-                focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 12.5)
+                focusMapPoint(Number(appt.map_lat), Number(appt.map_lng), 16)
               }}
               className={`w-full rounded-lg border p-2 text-left ${
                 idKey(appt.id) === selectedAppointmentId
@@ -504,16 +635,6 @@ export function MapPage() {
         </div>
         </aside>
       </div>
-      <DetailSheet
-        open={Boolean(selectedTechnicianModal)}
-        onOpenChange={(open) => {
-          if (!open) {
-            setSelectedTechnicianModal(null)
-          }
-        }}
-        title="Technician details"
-        data={selectedTechnicianModal}
-      />
     </div>
   )
 }

@@ -379,7 +379,7 @@ export function MapPage() {
                   <button
                     type="button"
                     onClick={resetMapSelection}
-                    className="mono absolute right-2 top-2.5 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px]"
+                    className="mono absolute right-2 top-2.5 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] outline-none ring-0 transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px] focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
                     aria-label="Close technician popup"
                   >
                     ×
@@ -463,7 +463,7 @@ export function MapPage() {
                   <button
                     type="button"
                     onClick={resetMapSelection}
-                    className="mono absolute right-2 top-2 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px]"
+                    className="mono absolute right-2 top-2 cursor-pointer bg-transparent text-[16px] leading-none text-[var(--text-secondary)] outline-none ring-0 transition-all hover:bg-transparent hover:text-[var(--text-primary)] hover:text-[19px] focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
                     aria-label="Close appointment popup"
                   >
                     ×

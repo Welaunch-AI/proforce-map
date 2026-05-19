@@ -1,0 +1,1157 @@
+{
+  "totals": {
+    "fieldroutes_total_employees": 430,
+    "fieldroutes_operational_employees_from_appointments": 73,
+    "fieldroutes_operational_pct": 16.98,
+    "motive_total_users": 466,
+    "motive_driver_users": 407,
+    "motive_fleet_users": 33,
+    "motive_admin_users": 26,
+    "motive_driver_pct": 87.34,
+    "matched_pairs_total": 56
+  },
+  "fieldroutes_breakdown": {
+    "type_code_counts": {
+      "0": 223,
+      "1": 86,
+      "2": 121
+    },
+    "active_counts": {
+      "1": 430
+    },
+    "operational_by_type_code": [
+      {
+        "fieldroutes_type_code": "0",
+        "employee_count": 223,
+        "operational_count": 16,
+        "operational_pct": 7.17
+      },
+      {
+        "fieldroutes_type_code": "2",
+        "employee_count": 121,
+        "operational_count": 9,
+        "operational_pct": 7.44
+      },
+      {
+        "fieldroutes_type_code": "1",
+        "employee_count": 86,
+        "operational_count": 37,
+        "operational_pct": 43.02
+      }
+    ]
+  },
+  "motive_breakdown": {
+    "role_counts": {
+      "admin": 26,
+      "fleet_user": 33,
+      "driver": 407
+    },
+    "status_counts": {
+      "deactivated": 206,
+      "active": 260
+    },
+    "driver_active": 209,
+    "driver_deactivated": 198
+  },
+  "cross_platform_technician_overlap": {
+    "matched_pairs_where_fieldroutes_operational": 16,
+    "matched_pairs_where_motive_role_driver": 40,
+    "matched_pairs_where_motive_role_fleet_user": 2,
+    "matched_pairs_operational_to_driver": 11,
+    "matched_pairs_operational_to_fleet_user": 1,
+    "matched_pairs_motive_role_breakdown": {
+      "admin": 14,
+      "driver": 40,
+      "fleet_user": 2
+    }
+  },
+  "fieldroutes_top_operational_employees_by_actor_events": [
+    {
+      "fieldroutes_employee_id": "8262",
+      "name": "NR Ashwin",
+      "type_code": "1",
+      "appointment_actor_events": 86
+    },
+    {
+      "fieldroutes_employee_id": "6478",
+      "name": "game 2",
+      "type_code": "1",
+      "appointment_actor_events": 53
+    },
+    {
+      "fieldroutes_employee_id": "556",
+      "name": "Sachin Bharti",
+      "type_code": "2",
+      "appointment_actor_events": 43
+    },
+    {
+      "fieldroutes_employee_id": "8007",
+      "name": "Alan Goza",
+      "type_code": "0",
+      "appointment_actor_events": 43
+    },
+    {
+      "fieldroutes_employee_id": "695",
+      "name": "Sterling Howard",
+      "type_code": "0",
+      "appointment_actor_events": 32
+    },
+    {
+      "fieldroutes_employee_id": "8943",
+      "name": "Anand Singh",
+      "type_code": "1",
+      "appointment_actor_events": 29
+    },
+    {
+      "fieldroutes_employee_id": "5196",
+      "name": "Anil Ch",
+      "type_code": "1",
+      "appointment_actor_events": 24
+    },
+    {
+      "fieldroutes_employee_id": "8333",
+      "name": "Lead1 QA Annad",
+      "type_code": "0",
+      "appointment_actor_events": 21
+    },
+    {
+      "fieldroutes_employee_id": "553",
+      "name": "Brad Mortensen",
+      "type_code": "2",
+      "appointment_actor_events": 20
+    },
+    {
+      "fieldroutes_employee_id": "5395",
+      "name": "Sterling Howard",
+      "type_code": "2",
+      "appointment_actor_events": 18
+    },
+    {
+      "fieldroutes_employee_id": "5170",
+      "name": "ankit pal",
+      "type_code": "2",
+      "appointment_actor_events": 16
+    },
+    {
+      "fieldroutes_employee_id": "9513",
+      "name": "Panda AnandAcc",
+      "type_code": "1",
+      "appointment_actor_events": 16
+    },
+    {
+      "fieldroutes_employee_id": "597",
+      "name": "Charles Barkley",
+      "type_code": "1",
+      "appointment_actor_events": 12
+    },
+    {
+      "fieldroutes_employee_id": "5297",
+      "name": "sharma ji",
+      "type_code": "1",
+      "appointment_actor_events": 12
+    },
+    {
+      "fieldroutes_employee_id": "5603",
+      "name": "sb test",
+      "type_code": "1",
+      "appointment_actor_events": 10
+    },
+    {
+      "fieldroutes_employee_id": "8432",
+      "name": "ReviewStage Service",
+      "type_code": "1",
+      "appointment_actor_events": 10
+    },
+    {
+      "fieldroutes_employee_id": "9508",
+      "name": "Conner Byrd",
+      "type_code": "1",
+      "appointment_actor_events": 9
+    },
+    {
+      "fieldroutes_employee_id": "9500",
+      "name": "Fernando Coria",
+      "type_code": "1",
+      "appointment_actor_events": 9
+    },
+    {
+      "fieldroutes_employee_id": "5252",
+      "name": "JT Technician",
+      "type_code": "1",
+      "appointment_actor_events": 8
+    },
+    {
+      "fieldroutes_employee_id": "8138",
+      "name": "raj hans",
+      "type_code": "2",
+      "appointment_actor_events": 7
+    },
+    {
+      "fieldroutes_employee_id": "592",
+      "name": "Kyle Hamilton",
+      "type_code": "0",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "5502",
+      "name": "charger technician",
+      "type_code": "1",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "6139",
+      "name": "Spenser Morgan",
+      "type_code": "1",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "5802",
+      "name": "Hunter Pedersen",
+      "type_code": "0",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "8011",
+      "name": "Roger Abboud",
+      "type_code": "0",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "8419",
+      "name": "FRTec AnandLead1",
+      "type_code": "1",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "9505",
+      "name": "Michael Dawson",
+      "type_code": "1",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "9498",
+      "name": "Alfred Watkins",
+      "type_code": "1",
+      "appointment_actor_events": 6
+    },
+    {
+      "fieldroutes_employee_id": "405",
+      "name": null,
+      "type_code": null,
+      "appointment_actor_events": 5
+    },
+    {
+      "fieldroutes_employee_id": "9371",
+      "name": "LeadStage1 Users",
+      "type_code": "1",
+      "appointment_actor_events": 5
+    },
+    {
+      "fieldroutes_employee_id": "598",
+      "name": "Michael Jordan",
+      "type_code": "1",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "2205",
+      "name": "Charles Fox",
+      "type_code": "0",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "6230",
+      "name": "hunter pedersen",
+      "type_code": "2",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "5251",
+      "name": "Nitin Technician",
+      "type_code": "1",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "5208",
+      "name": "Manav Rachna",
+      "type_code": "0",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "8374",
+      "name": "rado 1",
+      "type_code": "2",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "8423",
+      "name": "AutoSync User",
+      "type_code": "1",
+      "appointment_actor_events": 4
+    },
+    {
+      "fieldroutes_employee_id": "8009",
+      "name": "Peter Brodeur",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "8010",
+      "name": "Michael Mansell",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "8012",
+      "name": "Jessica Hogan",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "5455",
+      "name": "rajs hans",
+      "type_code": "0",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "9499",
+      "name": "Lakiesha Pitts",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "9504",
+      "name": "Brandon Benton",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "9501",
+      "name": "Christopher Jacobs",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "9522",
+      "name": "Boom Pro",
+      "type_code": "1",
+      "appointment_actor_events": 3
+    },
+    {
+      "fieldroutes_employee_id": "599",
+      "name": "Mike Tyson",
+      "type_code": "1",
+      "appointment_actor_events": 2
+    },
+    {
+      "fieldroutes_employee_id": "616",
+      "name": null,
+      "type_code": null,
+      "appointment_actor_events": 2
+    },
+    {
+      "fieldroutes_employee_id": "5193",
+      "name": "charles technician",
+      "type_code": "1",
+      "appointment_actor_events": 2
+    },
+    {
+      "fieldroutes_employee_id": "342",
+      "name": null,
+      "type_code": null,
+      "appointment_actor_events": 2
+    },
+    {
+      "fieldroutes_employee_id": "558",
+      "name": "Jill Esposito",
+      "type_code": "0",
+      "appointment_actor_events": 2
+    }
+  ],
+  "matched_pairs_with_roles_detail": [
+    {
+      "fieldroutes_employee_id": "7148",
+      "fieldroutes_name": "Adir Oren",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "8224120",
+      "motive_name": "Adir Oren",
+      "motive_role": "admin",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9498",
+      "fieldroutes_name": "Alfred Watkins",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 6,
+      "motive_user_id": "16299440",
+      "motive_name": "Alfred Watkins",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "548",
+      "fieldroutes_name": "Andrew Hatch",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5251190",
+      "motive_name": "Andrew Hatch",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6789",
+      "fieldroutes_name": "Brady Wood",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5490736",
+      "motive_name": "Brady Wood",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9504",
+      "fieldroutes_name": "Brandon Benton",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "16299370",
+      "motive_name": "Brandon Benton",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6401",
+      "fieldroutes_name": "Brandon Smith",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "17025080",
+      "motive_name": "Brandon Smith",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5426",
+      "fieldroutes_name": "Brianna Schwenk",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6569580",
+      "motive_name": "Brianna Schwenk",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "2205",
+      "fieldroutes_name": "Charles Fox",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 4,
+      "motive_user_id": "5226430",
+      "motive_name": "Charles Fox",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6387",
+      "fieldroutes_name": "Chris Eubank",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6337670",
+      "motive_name": "Chris Eubank",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9501",
+      "fieldroutes_name": "Christopher Jacobs",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "16299180",
+      "motive_name": "Christopher Jacobs",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8164",
+      "fieldroutes_name": "Christopher Ross",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5216101",
+      "motive_name": "Christopher Ross",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9508",
+      "fieldroutes_name": "Conner Byrd",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 9,
+      "motive_user_id": "16300280",
+      "motive_name": "Conner Byrd",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8909",
+      "fieldroutes_name": "Corey Hall",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6206450",
+      "motive_name": "Corey Hall",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7395",
+      "fieldroutes_name": "Craig Wilding",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "11514760",
+      "motive_name": "Craig Wilding",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7325",
+      "fieldroutes_name": "Daryan Kelly",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "7302440",
+      "motive_name": "Daryan Kelly",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5425",
+      "fieldroutes_name": "David Fulcher",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5216107",
+      "motive_name": "David Fulcher",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7324",
+      "fieldroutes_name": "David Gibbs",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "7332090",
+      "motive_name": "David Gibbs",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5221",
+      "fieldroutes_name": "David Margolies",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 1,
+      "motive_user_id": "8082580",
+      "motive_name": "David Margolies",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7657",
+      "fieldroutes_name": "Derick Joseph",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5630020",
+      "motive_name": "Derick Joseph",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8580",
+      "fieldroutes_name": "Derrick Lannon",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "8662590",
+      "motive_name": "Derrick Lannon",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9506",
+      "fieldroutes_name": "Diogenes Natera",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16300240",
+      "motive_name": "Diogenes Natera",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5744",
+      "fieldroutes_name": "Dom Diaz",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5481226",
+      "motive_name": "Dom Diaz",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9500",
+      "fieldroutes_name": "Fernando Coria",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 9,
+      "motive_user_id": "16298680",
+      "motive_name": "Fernando Coria",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9507",
+      "fieldroutes_name": "Frederick Armstrong",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16299060",
+      "motive_name": "Frederick Armstrong",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5700",
+      "fieldroutes_name": "Ian Gunn",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "11107940",
+      "motive_name": "Ian Gunn",
+      "motive_role": "fleet_user",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7323",
+      "fieldroutes_name": "Jacob Woods",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5499586",
+      "motive_name": "Jacob Woods",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6904",
+      "fieldroutes_name": "James Hewett",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5490903",
+      "motive_name": "James Hewett",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9511",
+      "fieldroutes_name": "Jeremy Wilcoxson",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16300600",
+      "motive_name": "Jeremy Wilcoxson",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8012",
+      "fieldroutes_name": "Jessica Hogan",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "5544940",
+      "motive_name": "Jessica Hogan",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7364",
+      "fieldroutes_name": "Joel Mathis",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6258720",
+      "motive_name": "Joel Mathis",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8816",
+      "fieldroutes_name": "John Pinckney",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5216115",
+      "motive_name": "John Pinckney",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6443",
+      "fieldroutes_name": "Kaleb Narine",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6337710",
+      "motive_name": "Kaleb Narine",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9503",
+      "fieldroutes_name": "Keshawn Thompson",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16299300",
+      "motive_name": "Keshawn Thompson",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9499",
+      "fieldroutes_name": "Lakiesha Pitts",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "16256540",
+      "motive_name": "Lakiesha Pitts",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9365",
+      "fieldroutes_name": "Lee Garrett",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "14646970",
+      "motive_name": "Lee Garrett",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8013",
+      "fieldroutes_name": "Leina Guzman",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5888790",
+      "motive_name": "Leina Guzman",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9509",
+      "fieldroutes_name": "Marcus Williams",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16300430",
+      "motive_name": "Marcus Williams",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8754",
+      "fieldroutes_name": "Marisol Jadaone",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "15156960",
+      "motive_name": "Marisol Jadaone",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7074",
+      "fieldroutes_name": "Mark Shorr",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6337580",
+      "motive_name": "Mark Shorr",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8941",
+      "fieldroutes_name": "Marquez Milligan",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "14784360",
+      "motive_name": "Marquez Milligan",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9505",
+      "fieldroutes_name": "Michael Dawson",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 6,
+      "motive_user_id": "16300190",
+      "motive_name": "Michael Dawson",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7322",
+      "fieldroutes_name": "Michael Frankhouse",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5216127",
+      "motive_name": "Michael Frankhouse",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5428",
+      "fieldroutes_name": "Michael Frye",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 2,
+      "motive_user_id": "5216128",
+      "motive_name": "Michael Frye",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9502",
+      "fieldroutes_name": "Michael Garrett",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16299240",
+      "motive_name": "Michael Garrett",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8010",
+      "fieldroutes_name": "Michael Mansell",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "5216129",
+      "motive_name": "Michael Mansell",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9510",
+      "fieldroutes_name": "Morris Mitchell",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "16300530",
+      "motive_name": "Morris Mitchell",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "5189",
+      "fieldroutes_name": "Parker Brandt",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "9101850",
+      "motive_name": "Parker Brandt",
+      "motive_role": "admin",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8009",
+      "fieldroutes_name": "Peter Brodeur",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 3,
+      "motive_user_id": "5216137",
+      "motive_name": "Peter Brodeur",
+      "motive_role": "driver",
+      "motive_status": "active",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7231",
+      "fieldroutes_name": "Rowdy Godwin",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6063370",
+      "motive_name": "Rowdy Godwin",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "6872",
+      "fieldroutes_name": "Rusty Breisinger",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5503737",
+      "motive_name": "Rusty Breisinger",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "7257",
+      "fieldroutes_name": "Ryan Buckley",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "5216144",
+      "motive_name": "Ryan Buckley",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "9045",
+      "fieldroutes_name": "Scott (William) Thomas",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "6594700",
+      "motive_name": "Scott (William) Thomas",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "8669",
+      "fieldroutes_name": "Wilbur Taylor",
+      "fieldroutes_type_code": "1",
+      "fieldroutes_operational_from_appointments": false,
+      "fieldroutes_appointment_actor_events": 0,
+      "motive_user_id": "9996960",
+      "motive_name": "Wilbur Taylor",
+      "motive_role": "driver",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_unique"
+    },
+    {
+      "fieldroutes_employee_id": "592",
+      "fieldroutes_name": "Kyle Hamilton",
+      "fieldroutes_type_code": "0",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 6,
+      "motive_user_id": "5190370",
+      "motive_name": "Kyle Hamilton",
+      "motive_role": "admin",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_with_missing_contact"
+    },
+    {
+      "fieldroutes_employee_id": "5395",
+      "fieldroutes_name": "Sterling Howard",
+      "fieldroutes_type_code": "2",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 18,
+      "motive_user_id": "5212751",
+      "motive_name": "Sterling Howard",
+      "motive_role": "admin",
+      "motive_status": "deactivated",
+      "match_method": "name_exact_with_missing_contact"
+    },
+    {
+      "fieldroutes_employee_id": "6230",
+      "fieldroutes_name": "hunter pedersen",
+      "fieldroutes_type_code": "2",
+      "fieldroutes_operational_from_appointments": true,
+      "fieldroutes_appointment_actor_events": 4,
+      "motive_user_id": "10315820",
+      "motive_name": "Hunter Pedersen",
+      "motive_role": "fleet_user",
+      "motive_status": "active",
+      "match_method": "name_exact_with_missing_contact"
+    }
+  ],
+  "data_profile": {
+    "fieldroutes_user_fields_available": [
+      "accessControl",
+      "accessControlProfileDescription",
+      "accessControlProfileID",
+      "active",
+      "dateUpdated",
+      "email",
+      "employeeID",
+      "employeeLink",
+      "endAddress",
+      "endCity",
+      "endLat",
+      "endLng",
+      "endState",
+      "endZip",
+      "experience",
+      "fname",
+      "initials",
+      "lastLogin",
+      "licenseNumber",
+      "linkedEmployeeIDs",
+      "lname",
+      "nickname",
+      "officeID",
+      "phone",
+      "pic",
+      "primaryTeam",
+      "regionalManagerOfficeIDs",
+      "roamingRep",
+      "skills",
+      "startAddress",
+      "startCity",
+      "startLat",
+      "startLng",
+      "startState",
+      "startZip",
+      "supervisorID",
+      "teamIDs",
+      "twoFactorConfigDueDate",
+      "twoFactorRequired",
+      "type",
+      "username"
+    ],
+    "motive_user_fields_available": [
+      "carrier_city",
+      "carrier_name",
+      "carrier_state",
+      "carrier_street",
+      "carrier_zip",
+      "company_reference_id",
+      "created_at",
+      "cycle",
+      "cycle2",
+      "driver_company_id",
+      "drivers_license_number",
+      "drivers_license_state",
+      "duty_status",
+      "eld_mode",
+      "email",
+      "exception_24_hour_restart",
+      "exception_24_hour_restart2",
+      "exception_8_hour_break",
+      "exception_8_hour_break2",
+      "exception_adverse_driving",
+      "exception_adverse_driving2",
+      "exception_ca_farm_school_bus",
+      "exception_ca_farm_school_bus2",
+      "exception_short_haul",
+      "exception_short_haul2",
+      "exception_wait_time",
+      "exception_wait_time2",
+      "expires_at",
+      "export_combined",
+      "export_odometers",
+      "export_recap",
+      "external_ids",
+      "first_name",
+      "group_ids",
+      "id",
+      "joined_at",
+      "last_name",
+      "manual_driving_enabled",
+      "metric_units",
+      "minute_logs",
+      "mobile_current_sign_in_at",
+      "mobile_last_active_at",
+      "mobile_last_sign_in_at",
+      "personal_conveyance_enabled",
+      "phone",
+      "phone_country_code",
+      "phone_ext",
+      "role",
+      "status",
+      "terminal_city",
+      "terminal_state",
+      "terminal_street",
+      "terminal_zip",
+      "time_zone",
+      "updated_at",
+      "username",
+      "violation_alerts",
+      "web_current_sign_in_at",
+      "web_last_active_at",
+      "web_last_sign_in_at",
+      "yard_moves_enabled"
+    ]
+  },
+  "interpretation_notes": [
+    "FieldRoutes technician count is derived from participation in appointment actor fields (employeeID, assignedTech, servicedBy, completedBy).",
+    "Motive driver users are taken from role=driver; fleet_user and admin are counted separately.",
+    "Because cross-platform matches are name-based in current report, technician overlap should be considered directional and validated before automation."
+  ]
+}

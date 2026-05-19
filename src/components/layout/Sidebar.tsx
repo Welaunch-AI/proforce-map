@@ -1,4 +1,4 @@
-import { CalendarDays, Grid2x2, MapPinned, PanelLeft, Users } from 'lucide-react'
+import { CalendarDays, ChartNoAxesCombined, Grid2x2, MapPinned, PanelLeft, Users } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -7,6 +7,8 @@ const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: Grid2x2 },
   { to: '/appointments', label: 'Appointments', icon: CalendarDays },
   { to: '/technicians', label: 'Technicians', icon: Users },
+  { to: '/reconciliation', label: 'Reconciliation', icon: ChartNoAxesCombined },
+  { to: '/user-kind-details', label: 'User Kind Details', icon: ChartNoAxesCombined },
 ]
 
 export function Sidebar() {

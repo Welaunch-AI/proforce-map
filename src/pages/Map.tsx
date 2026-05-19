@@ -23,6 +23,24 @@ function technicianPicUrl(tech: Employee): string | null {
   return `${PIC_CDN_BASE}/${picRaw}`
 }
 
+function shortStatusLabel(statusText?: string | null): string {
+  const normalized = String(statusText ?? '').toLowerCase()
+  if (normalized.includes('completed')) return 'Completed'
+  if (normalized.includes('pending')) return 'Pending'
+  return 'Unknown'
+}
+
+function shortStatusBadgeClass(statusText?: string | null): string {
+  const normalized = String(statusText ?? '').toLowerCase()
+  if (normalized.includes('completed')) {
+    return 'border-[var(--accent-success)] bg-[color-mix(in_srgb,var(--accent-success)_18%,transparent)] text-[var(--accent-success)]'
+  }
+  if (normalized.includes('pending')) {
+    return 'border-[var(--accent-warning)] bg-[color-mix(in_srgb,var(--accent-warning)_18%,transparent)] text-[var(--accent-warning)]'
+  }
+  return 'border-[var(--bg-border)] bg-[var(--bg-surface)] text-[var(--text-secondary)]'
+}
+
 export function MapPage() {
   const { data: technicians, loading } = useTechnicians()
   const { data: appointments } = useAppointments({ onlyToday: false })
@@ -30,6 +48,13 @@ export function MapPage() {
   const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null)
   const [selectedTechnicianModal, setSelectedTechnicianModal] = useState<Employee | null>(null)
   const [brokenPics, setBrokenPics] = useState<Record<string, boolean>>({})
+  const [techSearch, setTechSearch] = useState('')
+  const [apptSearch, setApptSearch] = useState('')
+  const [apptStatus, setApptStatus] = useState('all')
+  const [apptImportantOnly, setApptImportantOnly] = useState(false)
+  const [apptSort, setApptSort] = useState<'recent_added' | 'recent_updated' | 'appointment_date'>(
+    'recent_added',
+  )
   const mapRef = useRef<MapRef | null>(null)
   const mapShellRef = useRef<HTMLElement | null>(null)
 
@@ -41,14 +66,27 @@ export function MapPage() {
     [technicians],
   )
 
-  const sortedWithCoords = useMemo(() => {
-    return [...withCoords].sort((a, b) => {
+  const filteredTechnicians = useMemo(() => {
+    const query = techSearch.trim().toLowerCase()
+    const rows = withCoords.filter((tech) => {
+      if (!query) return true
+      const haystack = [
+        fullName(tech),
+        String(tech.id ?? ''),
+        String(tech.start_city ?? ''),
+        String(tech.start_state ?? ''),
+      ]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(query)
+    })
+    return [...rows].sort((a, b) => {
       const aHasPic = Boolean(technicianPicUrl(a))
       const bHasPic = Boolean(technicianPicUrl(b))
       if (aHasPic !== bHasPic) return aHasPic ? -1 : 1
       return fullName(a).localeCompare(fullName(b))
     })
-  }, [withCoords])
+  }, [withCoords, techSearch])
 
   const mapCenter = useMemo(() => {
     if (withCoords.length === 0) return { latitude: 35.2271, longitude: -80.8431, zoom: 4 }
@@ -59,7 +97,7 @@ export function MapPage() {
     }
   }, [withCoords])
 
-  const selected = sortedWithCoords.find((t) => idKey(t.id) === selectedId) ?? null
+  const selected = filteredTechnicians.find((t) => idKey(t.id) === selectedId) ?? null
 
   const appointmentsWithCoords = useMemo(() => {
     return appointments
@@ -85,6 +123,49 @@ export function MapPage() {
   const selectedAppointment =
     appointmentsWithCoords.find((a) => idKey(a.id) === selectedAppointmentId) ?? null
 
+  const appointmentStatuses = useMemo(() => {
+    return Array.from(
+      new Set(appointmentsWithCoords.map((a) => String(a.status_text ?? '')).filter(Boolean)),
+    )
+  }, [appointmentsWithCoords])
+
+  const filteredAppointmentsWithCoords = useMemo(() => {
+    const query = apptSearch.trim().toLowerCase()
+    const rows = appointmentsWithCoords.filter((appt) => {
+      if (apptStatus !== 'all' && String(appt.status_text ?? '') !== apptStatus) return false
+      if (apptImportantOnly) {
+        const hasImportant =
+          String(appt.status_text ?? '').toLowerCase().includes('pending') ||
+          String(appt.status_text ?? '').toLowerCase().includes('in progress') ||
+          String(appt.status_text ?? '').toLowerCase().includes('on the way') ||
+          Boolean(appt.notes) ||
+          Boolean(appt.ticket_id)
+        if (!hasImportant) return false
+      }
+      if (!query) return true
+      const haystack = [
+        String(appt.id ?? ''),
+        String(appt.customer_id ?? ''),
+        String(appt.status_text ?? ''),
+        String(appt.appointment_date ?? ''),
+      ]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(query)
+    })
+
+    const asTime = (value: unknown): number => {
+      const ts = new Date(String(value ?? '')).getTime()
+      return Number.isFinite(ts) ? ts : 0
+    }
+
+    return [...rows].sort((a, b) => {
+      if (apptSort === 'recent_updated') return asTime(b.date_updated) - asTime(a.date_updated)
+      if (apptSort === 'appointment_date') return asTime(b.appointment_date) - asTime(a.appointment_date)
+      return asTime(b.date_added) - asTime(a.date_added)
+    })
+  }, [appointmentsWithCoords, apptImportantOnly, apptSearch, apptSort, apptStatus])
+
   const focusMapPoint = (lat: number, lng: number, zoom = 12) => {
     if (!mapRef.current) return
     mapRef.current.flyTo({
@@ -96,14 +177,14 @@ export function MapPage() {
   }
 
   const zoomToFit = () => {
-    if (!mapRef.current || (sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0)) return
+    if (!mapRef.current || (filteredTechnicians.length === 0 && filteredAppointmentsWithCoords.length === 0)) return
 
     let minLng = Number.POSITIVE_INFINITY
     let minLat = Number.POSITIVE_INFINITY
     let maxLng = Number.NEGATIVE_INFINITY
     let maxLat = Number.NEGATIVE_INFINITY
 
-    sortedWithCoords.forEach((tech) => {
+    filteredTechnicians.forEach((tech) => {
       const lng = Number(tech.start_lng)
       const lat = Number(tech.start_lat)
       if (lng < minLng) minLng = lng
@@ -111,7 +192,7 @@ export function MapPage() {
       if (lng > maxLng) maxLng = lng
       if (lat > maxLat) maxLat = lat
     })
-    appointmentsWithCoords.forEach((appt) => {
+    filteredAppointmentsWithCoords.forEach((appt) => {
       const lng = Number(appt.map_lng)
       const lat = Number(appt.map_lat)
       if (lng < minLng) minLng = lng
@@ -152,6 +233,14 @@ export function MapPage() {
         <h2 className="text-sm uppercase tracking-[0.12em] text-[var(--text-secondary)]">
           Technician Map
         </h2>
+        <div className="mt-2 grid grid-cols-1 gap-2">
+          <input
+            value={techSearch}
+            onChange={(e) => setTechSearch(e.target.value)}
+            placeholder="Search tech..."
+            className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-xs"
+          />
+        </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
             <p className="mono text-[11px] text-[var(--text-secondary)]">Active</p>
@@ -159,11 +248,11 @@ export function MapPage() {
           </div>
           <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
             <p className="mono text-[11px] text-[var(--text-secondary)]">With GPS</p>
-            <p className="mono mt-1 text-lg font-bold">{withCoords.length}</p>
+            <p className="mono mt-1 text-lg font-bold">{filteredTechnicians.length}</p>
           </div>
         </div>
         <div className="mt-4 min-h-0 flex-1 space-y-2 overflow-auto pr-1">
-          {sortedWithCoords.map((tech) => {
+          {filteredTechnicians.map((tech) => {
             const key = idKey(tech.id)
             const isActive = key === idKey(selected?.id)
             const picUrl = technicianPicUrl(tech)
@@ -210,9 +299,9 @@ export function MapPage() {
               </button>
             )
           })}
-          {!loading && sortedWithCoords.length === 0 && (
+          {!loading && filteredTechnicians.length === 0 && (
             <p className="text-sm text-[var(--text-secondary)]">
-              No technicians with latitude/longitude found.
+              No technicians match the selected filters.
             </p>
           )}
         </div>
@@ -235,7 +324,7 @@ export function MapPage() {
             style={{ width: '100%', height: '100%' }}
             mapStyle="mapbox://styles/mapbox/dark-v11"
           >
-            {sortedWithCoords.map((tech) => {
+            {filteredTechnicians.map((tech) => {
               const key = idKey(tech.id)
               return (
                 <Marker
@@ -262,7 +351,7 @@ export function MapPage() {
                 </Marker>
               )
             })}
-            {appointmentsWithCoords.map((appt) => (
+            {filteredAppointmentsWithCoords.map((appt) => (
               <Marker
                 key={`appt-${idKey(appt.id)}`}
                 longitude={Number(appt.map_lng)}
@@ -318,7 +407,7 @@ export function MapPage() {
               <button
                 type="button"
                 onClick={zoomToFit}
-                disabled={sortedWithCoords.length === 0 && appointmentsWithCoords.length === 0}
+              disabled={filteredTechnicians.length === 0 && filteredAppointmentsWithCoords.length === 0}
                 className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-elevated)] px-3 py-1 text-xs uppercase text-[var(--text-primary)] disabled:opacity-40"
               >
                 Zoom to Fit
@@ -333,11 +422,50 @@ export function MapPage() {
         <p className="mono mt-1 text-[11px] text-[var(--text-tertiary)]">
           Appointments with valid coordinates
         </p>
+        <div className="mt-2 grid grid-cols-1 gap-2">
+          <input
+            value={apptSearch}
+            onChange={(e) => setApptSearch(e.target.value)}
+            placeholder="Search appointment..."
+            className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-xs"
+          />
+          <div className="grid grid-cols-2 gap-2">
+            <select
+              value={apptStatus}
+              onChange={(e) => setApptStatus(e.target.value)}
+              className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-xs"
+            >
+              <option value="all">All Status</option>
+              {appointmentStatuses.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+            <select
+              value={apptSort}
+              onChange={(e) => setApptSort(e.target.value as typeof apptSort)}
+              className="mono rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-xs"
+            >
+              <option value="recent_added">Recent Added</option>
+              <option value="recent_updated">Recent Updated</option>
+              <option value="appointment_date">Appointment Date</option>
+            </select>
+          </div>
+          <label className="mono flex items-center gap-2 rounded-md border border-[var(--bg-border)] bg-[var(--bg-surface)] px-2 py-1 text-[11px]">
+            <input
+              type="checkbox"
+              checked={apptImportantOnly}
+              onChange={(e) => setApptImportantOnly(e.target.checked)}
+            />
+            Important Only
+          </label>
+        </div>
         <p className="mono mt-1 text-[11px] text-[var(--text-secondary)]">
-          Appointments GPS: {appointmentsWithCoords.length}
+          Appointments GPS: {filteredAppointmentsWithCoords.length}
         </p>
         <div className="mt-2 min-h-0 flex-1 space-y-2 overflow-auto pr-1">
-          {appointmentsWithCoords.slice(0, 80).map((appt) => (
+          {filteredAppointmentsWithCoords.slice(0, 80).map((appt) => (
             <button
               type="button"
               key={`appt-list-${idKey(appt.id)}`}
@@ -352,16 +480,25 @@ export function MapPage() {
                   : 'border-[var(--bg-border)] bg-[var(--bg-surface)]'
               }`}
             >
-              <p className="mono text-xs">Appt #{String(appt.id)}</p>
+              <div className="flex items-center justify-between gap-2">
+                <p className="mono text-xs">Appt #{String(appt.id)}</p>
+                <span
+                  className={`mono rounded border px-1 py-0.5 text-[9px] ${shortStatusBadgeClass(
+                    appt.status_text,
+                  )}`}
+                >
+                  {shortStatusLabel(appt.status_text)}
+                </span>
+              </div>
               <p className="mono text-[11px] text-[var(--text-secondary)]">
                 {formatDate(appt.appointment_date)} | {String(appt.map_lat.toFixed(4))},{' '}
                 {String(appt.map_lng.toFixed(4))}
               </p>
             </button>
           ))}
-          {appointmentsWithCoords.length === 0 && (
+          {filteredAppointmentsWithCoords.length === 0 && (
             <p className="text-xs text-[var(--text-secondary)]">
-              No appointment coordinates available.
+              No appointments match the selected filters.
             </p>
           )}
         </div>

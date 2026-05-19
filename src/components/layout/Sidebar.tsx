@@ -8,6 +8,7 @@ const navItems = [
   { to: '/appointments', label: 'Appointments', icon: CalendarDays },
   { to: '/technicians', label: 'Technicians', icon: Users },
   { to: '/reconciliation', label: 'Reconciliation', icon: ChartNoAxesCombined },
+  { to: '/user-kind-details', label: 'User Kind Details', icon: ChartNoAxesCombined },
 ]
 
 export function Sidebar() {

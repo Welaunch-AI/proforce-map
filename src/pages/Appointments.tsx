@@ -18,7 +18,13 @@ import {
 } from '../components/ui/table'
 import { useAppointments } from '../hooks/useAppointments'
 import { useTechnicians } from '../hooks/useTechnicians'
-import { formatDate, formatRelative, fullName, idKey } from '../lib/utils'
+import {
+  formatDate,
+  formatRelative,
+  formatTimeRangeEST,
+  fullName,
+  idKey,
+} from '../lib/utils'
 
 const PAGE_SIZE = 25
 const ATTRIBUTE_FILTERS = [
@@ -231,7 +237,7 @@ export function AppointmentsPage() {
                     <TableCell><span className="mono">{String(appt.id)}</span></TableCell>
                     <TableCell>{formatDate(appt.appointment_date)}</TableCell>
                     <TableCell>
-                      <span className="mono">{`${appt.start_time_raw ?? '-'} - ${appt.end_time_raw ?? '-'}`}</span>
+                      <span className="mono">{formatTimeRangeEST(appt.start_time_raw, appt.end_time_raw)}</span>
                     </TableCell>
                     <TableCell><StatusBadge status={appt.status_text} /></TableCell>
                     <TableCell>{fullName(employeeMap.get(idKey(appt.employee_id)))}</TableCell>

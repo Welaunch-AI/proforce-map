@@ -9,7 +9,7 @@ import { StatusBadge } from '../components/ui/StatusBadge'
 import { useAppointments } from '../hooks/useAppointments'
 import { useTechnicians } from '../hooks/useTechnicians'
 import type { Appointment, Employee } from '../lib/types'
-import { formatDate, fullName, idKey } from '../lib/utils'
+import { formatDate, formatTimeRangeEST, fullName, idKey } from '../lib/utils'
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN as string | undefined
 const PIC_CDN_BASE =
@@ -296,8 +296,10 @@ export function MapPage() {
                   <p className="mono text-xs">Appointment #{String(selectedAppointment.id)}</p>
                   <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
                     {formatDate(selectedAppointment.appointment_date)} |{' '}
-                    {selectedAppointment.start_time_raw ?? '-'} -{' '}
-                    {selectedAppointment.end_time_raw ?? '-'}
+                    {formatTimeRangeEST(
+                      selectedAppointment.start_time_raw,
+                      selectedAppointment.end_time_raw,
+                    )}
                   </p>
                   <div className="mt-1">
                     <StatusBadge status={selectedAppointment.status_text} />

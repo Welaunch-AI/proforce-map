@@ -5,6 +5,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from './dialog'
+import { formatDate, formatDateTimeEST, formatTimeEST } from '../../lib/utils'
 
 type Props = {
   open: boolean
@@ -15,6 +16,22 @@ type Props = {
 
 export function DetailSheet({ open, onOpenChange, title, data }: Props) {
   const entries = Object.entries(data ?? {})
+
+  const formatValue = (key: string, value: unknown): string => {
+    if (value == null) return '-'
+    if (typeof value === 'string') {
+      const lowerKey = key.toLowerCase()
+      if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return formatDate(value)
+      if (lowerKey.includes('time') && /^\d{2}:\d{2}(:\d{2})?$/.test(value)) {
+        return formatTimeEST(value)
+      }
+      if (lowerKey.includes('date') || lowerKey.endsWith('_at')) {
+        return formatDateTimeEST(value)
+      }
+    }
+    return String(value)
+  }
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
@@ -46,8 +63,8 @@ export function DetailSheet({ open, onOpenChange, title, data }: Props) {
                 </p>
                 <p className="mt-1 break-all text-sm text-[var(--text-primary)]">
                   {typeof value === 'number' || key.includes('id') || key.includes('date')
-                    ? <span className="mono">{String(value ?? '-')}</span>
-                    : String(value ?? '-')}
+                    ? <span className="mono">{formatValue(key, value)}</span>
+                    : formatValue(key, value)}
                 </p>
               </div>
             ))}

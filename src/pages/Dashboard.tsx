@@ -5,7 +5,14 @@ import { StatCard } from '../components/ui/StatCard'
 import { StatusBadge } from '../components/ui/StatusBadge'
 import { useAppointments } from '../hooks/useAppointments'
 import { useTechnicians } from '../hooks/useTechnicians'
-import { fullName, idKey, initialsFromName, isoToday } from '../lib/utils'
+import {
+  formatDateTimeEST,
+  formatTimeEST,
+  fullName,
+  idKey,
+  initialsFromName,
+  isoToday,
+} from '../lib/utils'
 
 const pendingKeywords = ['pending', 'scheduled']
 
@@ -88,7 +95,9 @@ export function DashboardPage() {
                   >
                     <div>
                       <p className="mono text-sm">{String(appt.id)}</p>
-                      <p className="mono text-xs text-[var(--text-secondary)]">{appt.start_time_raw ?? '-'}</p>
+                      <p className="mono text-xs text-[var(--text-secondary)]">
+                        {formatTimeEST(appt.start_time_raw)}
+                      </p>
                     </div>
                     <StatusBadge status={appt.status_text} />
                     <div className="mono text-xs text-[var(--text-secondary)]">
@@ -122,7 +131,7 @@ export function DashboardPage() {
                     <span>{name}</span>
                   </div>
                   <span className="mono text-xs text-[var(--text-secondary)]">
-                    {String(tech.date_updated ?? '-')}
+                    {formatDateTimeEST(tech.date_updated)}
                   </span>
                 </button>
               )

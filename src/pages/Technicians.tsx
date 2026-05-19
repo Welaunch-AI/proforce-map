@@ -11,7 +11,14 @@ import { StatusBadge } from '../components/ui/StatusBadge'
 import { useAppointments } from '../hooks/useAppointments'
 import type { Appointment, Employee } from '../lib/types'
 import { useTechnicians } from '../hooks/useTechnicians'
-import { formatDate, fullName, idKey } from '../lib/utils'
+import {
+  formatDate,
+  formatDateTimeEST,
+  formatTimeEST,
+  formatTimeRangeEST,
+  fullName,
+  idKey,
+} from '../lib/utils'
 
 const PIC_CDN_BASE =
   (import.meta.env.VITE_FIELD_ROUTE_PIC_CDN_BASE_URL as string | undefined)?.replace(/\/+$/, '') ||
@@ -43,6 +50,17 @@ function hasDisplayValue(value: unknown): boolean {
   if (value == null) return false
   if (typeof value === 'string') return value.trim() !== ''
   return true
+}
+
+function formatDisplayValue(key: string, value: unknown): string {
+  if (value == null) return '-'
+  if (typeof value === 'string') {
+    const lowerKey = key.toLowerCase()
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return formatDate(value)
+    if (lowerKey.includes('time') && /^\d{2}:\d{2}(:\d{2})?$/.test(value)) return formatTimeEST(value)
+    if (lowerKey.includes('date') || lowerKey.endsWith('_at')) return formatDateTimeEST(value)
+  }
+  return String(value)
 }
 
 export function TechniciansPage() {
@@ -156,7 +174,7 @@ export function TechniciansPage() {
                 <div className="mt-3 flex items-center justify-between">
                   <StatusBadge status={tech.active === '1' ? 'Active' : 'Inactive'} />
                   <p className="mono text-xs text-[var(--text-secondary)]">
-                    {String(tech.date_updated ?? '-')}
+                    {formatDateTimeEST(tech.date_updated)}
                   </p>
                 </div>
                 {(tech.start_city || tech.start_state) && (
@@ -222,7 +240,7 @@ export function TechniciansPage() {
                     </div>
                     <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
                       <p className="mono text-xs uppercase text-[var(--text-secondary)]">Date Updated</p>
-                      <p className="mono mt-2 text-sm">{String(selected.date_updated ?? '-')}</p>
+                      <p className="mono mt-2 text-sm">{formatDateTimeEST(selected.date_updated)}</p>
                     </div>
                     <div className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] p-3">
                       <p className="mono text-xs uppercase text-[var(--text-secondary)]">Appointments</p>
@@ -278,8 +296,8 @@ export function TechniciansPage() {
                               <StatusBadge status={appt.status_text} />
                             </div>
                             <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
-                              {formatDate(appt.appointment_date)} | {appt.start_time_raw ?? '-'} -{' '}
-                              {appt.end_time_raw ?? '-'}
+                              {formatDate(appt.appointment_date)} |{' '}
+                              {formatTimeRangeEST(appt.start_time_raw, appt.end_time_raw)}
                             </p>
                             <p className="mono mt-1 text-xs text-[var(--text-secondary)]">
                               Customer: {String(appt.customer_id ?? '-')}
@@ -309,9 +327,9 @@ export function TechniciansPage() {
                             </p>
                             <p className="mt-1 break-all text-xs text-[var(--text-primary)]">
                               {isMonospaceField(key, value) ? (
-                                <span className="mono">{String(value ?? '-')}</span>
+                                <span className="mono">{formatDisplayValue(key, value)}</span>
                               ) : (
-                                String(value ?? '-')
+                                formatDisplayValue(key, value)
                               )}
                             </p>
                           </div>

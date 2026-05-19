@@ -4,6 +4,7 @@ import { TopBar } from './components/layout/TopBar'
 import { AppointmentsPage } from './pages/Appointments'
 import { DashboardPage } from './pages/Dashboard'
 import { MapPage } from './pages/Map'
+import { ReconciliationPage } from './pages/Reconciliation'
 import { TechniciansPage } from './pages/Technicians'
 
 function AppLayout() {
@@ -23,6 +24,7 @@ function AppLayout() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/appointments" element={<AppointmentsPage />} />
             <Route path="/technicians" element={<TechniciansPage />} />
+            <Route path="/reconciliation" element={<ReconciliationPage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="*" element={<Navigate to="/map" replace />} />
           </Routes>
